@@ -1,0 +1,143 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Template</title>
+	<style type="text/css">
+		* {
+			font-size: 16px !important;
+		}
+
+		.style1 {
+			font-size: 12px;
+			font-weight: bold;
+			color: #545454;
+		}
+
+		.style2 {
+			font-size: 11px;
+		}
+
+		.style3 {
+			font-size: 12px;
+			font-weight: bold;
+			color: #FFFFFF;
+		}
+
+		.style4 {
+			font-size: 11px;
+			font-weight: bold;
+		}
+
+		a:link {
+			font-size: 11px;
+			color: #3D8786;
+			text-decoration: underline;
+		}
+
+		a:active {
+			font-size: 11px;
+			color: #BF6F1E;
+			text-decoration: none;
+		}
+
+		a:visited {
+			font-size: 11px;
+			color: #000000;
+			text-decoration: underline;
+		}
+
+		a:hover {
+			font-size: 11px;
+			color: #894029;
+			text-decoration: underline;
+		}
+	</style>
+	<script language="JavaScript" type="text/JavaScript">
+		function MM_openBrWindow(chap) {
+			window.open(chap+"/index.html", "_blank", "width=1280px, height=720px"); 
+		}
+	</script>
+</head>
+
+<body>
+
+	<table width="798" height="50" border="0" align="center" cellpadding="6" cellspacing="1" bgcolor="#a9a9a9">
+		<tr>
+			<td align="center" bgcolor="#A4C7CA" class="style3">Template</td>
+		</tr>
+	</table>
+
+	<br />
+
+	<table width="798" border="0" align="center" cellpadding="6" cellspacing="1" bgcolor="#a9a9a9">
+
+		<colgroup>
+			<col width="10%">
+			<col>
+			<col width="10%">
+		</colgroup>
+
+		<tr align="center" bgcolor="#C9DEE0" height="20">
+			<td width="60"><span class="style4">순번</span></td>
+			<td><span class="style4">차시명</span></td>
+			<td width="140"><span class="style4">보기</span></td>
+		</tr>
+
+		<script language="JavaScript" type="text/JavaScript">
+			function setNum(num){
+				var tempnum = num>9?num:"0"+num;
+				return tempnum;
+			}
+			// 모듈명 ======================================
+				var grp_arr = [
+				];
+			// 차시명 ======================================
+				var title_arr = [
+					"01",
+					"02",
+					"03",
+				];
+
+				var grp = [];
+				var active = [
+					1,1,1,1,1,	
+				];
+
+			//===========================================
+
+			var k = 0;
+			
+			for( var i=0; i<title_arr.length; ++i){
+				window.document.write('<tr bgcolor="#FFFFFF" height="20">');
+				window.document.write('	<td align="center" bgcolor="#E4EEEF" class="style2"><span class="style2">'+setNum(i+1)+'</span></td>');
+				if( i == grp[k] ){
+					++k;
+					window.document.write('	<td align="center" class="style2" rowspan="'+(grp[k]-grp[k-1])+'" width="220"><span class="style2">'+grp_arr[k-1]+'</span></td>');
+				}
+				window.document.write('	<td align="center"><span class="style2">'+title_arr[i]+'</span></td>');
+				if( active[i] == 1 ){
+					window.document.write('	<td align="center"><span class="style2"><a href=# onClick=MM_openBrWindow("'+setNum(i+1)+'") > click </a></span></td>');
+					
+				}else{
+					window.document.write('	<td align="center"><span class="style2"> click </span></td>');
+				}
+				window.document.write('</tr>');
+			}
+			//===========================================
+
+
+		</script>
+	</table>
+	<input type="file" id="excelFile" onchange="excelExport(event)" />
+
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.14.3/xlsx.full.min.js"></script>
+	<script src="./common//src/Library/jquery-3.5.1.js" type='text/javascript'></script>
+	<script src="./common//src/Library/jquery.js" type='text/javascript'></script>
+	<script src="./common//src/Library/jquery-1.7.2.min.js" type='text/javascript'></script>
+	<script src="./common/src/data.js" type='text/javascript'></script>
+</body>
+
+</html>

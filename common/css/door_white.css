@@ -1,0 +1,169 @@
+/* 수정시 theme 별로 적용해주세요. */
+
+/* animation : 이름 진행시간 가속도 지연시간 반복횟수 연결방향; */
+#topWrap{width: 960px; min-height:100%; margin: 15px auto; box-shadow: 0px 18px 20px 10px rgb(0 0 0 / 50%);}
+
+header, section, footer {
+    width: 100%;
+    margin: 0 auto;
+}
+
+header{box-sizing: border-box; padding: 20px;}
+
+#content_01{
+    width: 80%;
+}
+
+.items > li > span{
+    display: inline-block;
+    text-align: center;
+    font-weight: bold;
+    margin : 0 0 20px 30px;
+}
+/* 차시번호 */
+.items > li > span:nth-child(1){width: 12%; margin-left: 0;}
+/* 차시명 */
+.items > li > span:nth-child(2){width: 65%;}
+/* 보기버튼 */
+.items > li > span:nth-child(3){width: 12%;}
+
+.undeco{
+    text-decoration: none;
+}
+
+.neon:hover{
+    color: #FFF;
+    transition: 0.5s;
+    cursor: pointer;
+    background: #474747;
+    box-shadow:  0 0 10px #474747, 0 0 20px #474747, 0 0 40px #474747;
+    -webkit-box-shadow:  0 0 10px #474747, 0 0 20px #474747, 0 0 40px #474747;
+    -moz-box-shadow:  0 0 10px #474747, 0 0 20px #474747, 0 0 40px #474747;
+    -ms-box-shadow:  0 0 10px #474747, 0 0 20px #474747, 0 0 40px #474747;
+}
+
+.neon2:hover{
+    color: #FFF;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.companyWrap{
+    width: 100%;
+    height: 50px;
+    overflow: hidden;
+}
+.company_title{
+    position: relative;
+    color: #FFF;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: left;
+    letter-spacing: 2px;
+    overflow: hidden;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+.company_title.text1{
+    width: 100%;
+    animation: text 1s 1;
+}
+.company_title.text2{
+    font-size: 14px;
+}
+
+@keyframes text{
+    0%{
+        margin-bottom: 40px;
+    }
+    50%{
+        letter-spacing: 4px;
+        margin-bottom: 60px;
+    }
+    100%{
+        margin-bottom: 10px;
+        letter-spacing: 2px;
+    }
+}
+
+/* 
+============================================================초기화 
+*/
+@font-face {
+    font-family: "PAY";
+    src: url("../css/font/paybooc Light.ttf") format('truetype'),
+         url("../css/font/paybooc Medium.ttf") format('truetype'),
+         url("../css/font/paybooc Bold.ttf") format('truetype'),
+         url("../css/font/paybooc ExtraBold.ttf") format('truetype'),
+         url("../css/font/paybooc Light.otf"),
+         url("../css/font/paybooc Medium.otf"),
+         url("../css/font/paybooc Bold.otf"),
+         url("../css/font/paybooc ExtraBold.otf"),
+         url("../css/font/paybooc Light.woff") format('woff'),
+         url("../css/font/paybooc Medium.woff") format('woff'),
+         url("../css/font/paybooc Bold.woff") format('woff'),
+         url("../css/font/paybooc ExtraBold.woff") format('woff');
+}
+
+/*기본태그 정의*/
+
+html, body {
+    height:100%;
+    font-family: 'PAY';
+    color: #a5a5a5;
+    margin:0;
+    padding:0; 
+    background-color: #dfdfdf;
+}
+
+/* 마진과 패딩의 초기화 */
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, p, blockquote, th, td {margin:0; padding:0;}
+
+/* 헤더 폰트 사이즈 초기화 */
+h1, h2, h3, h4, h5, h6 {font-size:100%;}
+
+/* 리스트의 스타일 제거 */
+ol, ul {list-style:none;}
+
+/* 폰트 강조 특성 초기화 */
+address, caption, cite, code, dfn, em, strong, th, var {font-style:normal;}
+
+/* 테이블 스타일 초기화 */
+table {border-collapse:collapse; border-spacing:0; table-layout:fixed;}
+td {word-break:break-all; word-wrap:break-word;}
+
+/* 이미지 및 필드셋에서 보더 표시 초기화 */
+fieldset, img {border:0;}
+
+/* 캡션 텍스트 정렬 초기화 */
+caption {text-align:left;}
+
+a{cursor: pointer;}
+a:link    {text-decoration:none;}
+a:active    {text-decoration:none;}
+a:visited    {text-decoration:none;}
+a:hover    {text-decoration: none;}
+
+/* 공통 사용 */
+
+.transX{
+    transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+}
+
+.transY{
+    transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+}
+
+.trans{
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+}
+

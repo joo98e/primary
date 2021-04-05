@@ -1,0 +1,43 @@
+.guideArea {
+  position: relative;
+  top: 0;
+  left: 0;
+  font-size: 24px;
+  font-weight: 700;
+  font-family: "PAY";
+  background: url(../img/guide/bg.png) 0 0 no-repeat;
+  z-index: 1;
+}
+.VerticalWrap {
+  position: absolute;
+  top: 50%;
+}
+.guideTopArea {
+  display: none;
+  position: absolute;
+  width: 800px;
+  min-height: 80px;
+  top: 150px;
+  left: 250px;
+}
+.guideBottomArea {
+  display: none;
+  position: absolute;
+  width: 800px;
+  min-height: 80px;
+  top: 360px;
+  left: 250px;
+}
+.textWrap {
+  position: relative;
+}
+.textWrap > span {
+  display: inline;
+  line-height: 40px;
+}
+
+.guideArea .bullet {
+  position: absolute;
+  top: 6px;
+  left: -35px;
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="KO">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2021</title>
+    <script>
+        // 테마 1 : dark, 2 : white
+        var theme = 1;
+
+        // data
+        var docData = {
+            // 문서 탭 제목
+            dotTitle: 'normal',
+            // 헤더 타이틀
+            company: 'MirimMediaLab',
+        };
+
+        var courseData = {
+            // 과정명
+            title: 'Primitive',
+            // 차시명
+            countName: [
+                "차시명1",
+                "차시명2",
+                "차시명3",
+                "차시명4",
+                "차시명5",
+                "차시명5",
+            ],
+            // 활성화 여부
+            active: [
+                // 0~ 5
+                1, 1, 1, 1, 1,
+                // 6~10
+                0, 0, 0, 0, 0,
+            ],
+            // 콘텐츠 유형(HTML = 1, MOVIE = 2)
+            type: 1,
+            // 콘텐츠 사이즈
+            size: [
+                // width
+                '1280',
+                // height
+                '720',
+            ],
+        }
+
+
+
+    </script>
+</head>
+
+<body>
+    <div id="topWrap">
+        <header>
+            <div class="companyWrap">
+                <div class="company_title text1"></div>
+                <div class="company_title text2"></div>
+            </div>
+        </header>
+
+        <!-- 콘텐츠 -->
+        <section id="content_01"></section>
+    </div>
+
+    <script type="text/javascript" src="./common/src/Library/jquery-3.6.0.js"></script>
+    <script type="text/javascript" src="./common/src/door.js"></script>
+</body>
+
+</html>

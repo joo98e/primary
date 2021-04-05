@@ -1,0 +1,159 @@
+/* 컨트롤바 공통 ---------------------------------------------------------------------------- */
+#control {
+  font-family: "PAY";
+  font-weight: bold;
+}
+
+.controlPanel {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+/* 콘텐츠 목차 ---------------------------------------------------------------------------- */
+.control_index {
+  width: 70px;
+  margin-left: 10px;
+  padding: 0 10px;
+  background: url(../img/control/footer_idx_disable.png) 50% 50% no-repeat;
+}
+.control_index:hover {
+  background: url(../img/control/footer_idx_enable.png) 50% 50% no-repeat;
+}
+
+/* 비디오 제어 ---------------------------------------------------------------------------- */
+.control_vod {
+  position: relative;
+  display: inline-block;
+  height: 40px;
+  left: 500px;
+}
+/* 비디오 시간 ---------------------------------------------------------------------------- */
+.time {
+  position: relative;
+  display: inline-block;
+  height: 40px;
+  left: 575px;
+  color: #fff;
+}
+.time > span {
+  display: table-cell;
+  height: 40px;
+  text-align: center;
+  vertical-align: middle;
+}
+.time > span:nth-child(2)::before {
+  content: " / ";
+  display: inline-block;
+  width: 30px;
+  text-align: center;
+}
+
+/* 아이콘별 */
+.control_play {
+  left: 20px;
+  background: url(../img/control/footer_play_disable.png) 50% 50% no-repeat;
+}
+.control_pause {
+  left: 20px;
+  background: url(../img/control/footer_pause_disable.png) 50% 50% no-repeat;
+}
+.control_replay {
+  right: 20px;
+  background: url(../img/control/footer_replay_disable.png) 50% 50% no-repeat;
+}
+.control_play:hover {
+  background: url(../img/control/footer_play_enable.png) 50% 50% no-repeat;
+}
+.control_pause:hover {
+  background: url(../img/control/footer_pause_enable.png) 50% 50% no-repeat;
+}
+.control_replay:hover {
+  background: url(../img/control/footer_replay_enable.png) 50% 50% no-repeat;
+}
+
+/* 페이지 제어 ---------------------------------------------------------------------------- */
+.control_paging {
+  position: relative;
+  display: inline-block;
+  height: 40px;
+  left: 730px;
+}
+.control_paging > span {
+  display: table-cell;
+  width: 30px;
+  color: #fff;
+  text-align: center;
+  vertical-align: middle;
+}
+.control_totalP {
+  cursor: unset;
+}
+.control_pageDivision{cursor: unset;}
+
+.control_currentP {
+  cursor: unset;
+}
+.control_prev {
+  background: url(../img/control/footer_prev_disable.png) 50% 50% no-repeat;
+}
+.control_next {
+  background: url(../img/control/footer_next_disable.png) 50% 50% no-repeat;
+}
+.control_prev:hover {
+  background: url(../img/control/footer_prev_enable.png) 50% 50% no-repeat;
+}
+.control_next:hover {
+  background: url(../img/control/footer_next_enable.png) 50% 50% no-repeat;
+}
+
+
+/* 페이지 제어 ---------------------------------------------------------------------------- */
+.controlGauge{
+  display: inline-block;
+}
+
+/* 게이지바 컨트롤바 위에 있을 경우 */
+.gaugeTop{
+  position: absolute;
+  top: -10px;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  background-color: #0e7b65;
+  cursor: pointer;
+}
+
+.gaugeBar.positionTop{
+  display: block;
+  width: 0;
+  height: 10px;
+  background-color: #57b8fe;
+}
+
+/* 게이지바 컨트롤바 아래에 있을 경우 */
+.gaugeInner{
+  position: absolute;
+  top: 50%;
+  left: 125px;
+  width: 400px;
+  height: 10px;
+  transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  background-color: #0e7b65;
+  cursor: pointer;
+}
+
+.gaugeBar.positionInner{
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  transition: 0.5s;
+  background-color: #57b8fe;
+}
