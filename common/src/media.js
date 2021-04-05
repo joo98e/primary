@@ -5,7 +5,9 @@ var mCtrl = {
 
     playToggle: function () {
         $('#ready').hide();
-
+        
+        if (vod.ended) return;
+        
         if (vod.paused) {
             vod.play();
             if (playIconToggle) $('.control_vod .control_pause').show();

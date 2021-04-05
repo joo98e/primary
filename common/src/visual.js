@@ -1,6 +1,4 @@
 
-// visual : s
-var modalState;
 
 var visual = {
 
@@ -13,12 +11,15 @@ var visual = {
 
     },
 
+
     movePage: function () {
         // 클릭된 클래스명으로 이벤트 구분
-        var _this = this;
         var state = String;
+
+        var _this = this;
         if (_this.classList.contains('control_prev')) state = 'prev';
         if (_this.classList.contains('control_next')) state = 'next';
+
         // 인덱스 기능 추가 후 적용 필요
         // if (_this.classList.contains('')) state = 'move';
 
@@ -32,7 +33,7 @@ var visual = {
                 } else {
                     // 진도체크 없음
                     if (curPage == pageTotal) {
-                        visual.modalMsg('안내', '마지막 페이지입니다.');
+                        visual.msgToggle('안내', '마지막 페이지입니다.');
                     } else {
                         location.href = numSet.set(curPage + 1) + '.html';
                     }
@@ -48,17 +49,16 @@ var visual = {
                 } else {
                     // 진도체크 없음
                     if (curPage == 1) {
-                        visual.modalMsg('안내', '첫 페이지입니다.');
+                        visual.msgToggle('안내', '첫 페이지입니다.');
                     } else {
                         location.href = numSet.set(curPage - 1) + '.html';
                     }
                 }
                 break;
 
-            // 특정 페이지 이동
+            // 특정 페이지 이동(인덱스 등)
             case 'move':
                 console.log('이동')
-
 
             default:
                 break;
@@ -66,8 +66,8 @@ var visual = {
     },
 
     // 이미지 태그에 한함.
-    // visual.hoverFn('자바스크립트 선택자', '_over' || '_active' 등)
-    hoverFn: function ($elem, hoverName) {
+    // ex) visual.hover('자바스크립트 선택자', '_over');
+    hover: function ($elem, hoverName) {
         var fileName = $elem.src.substring($elem.src.lastIndexOf('/') + 1, $elem.src.length);
         var fileSrc = $elem.src.substring(0, $elem.src.lastIndexOf('/') + 1);
 
@@ -86,46 +86,32 @@ var visual = {
         });
     },
 
-    modalMsg: function (titleMsg, bodyMsg) {
-        try {
-            
-            $('#modalAlert .modal-header h5').text(titleMsg);
-            $('#modalAlert .modal-header h5').attr('title', titleMsg);
-            $('#modalAlert .modal-body h6').text(bodyMsg);
-            $('#modalAlert .modal-body h6').attr('title', bodyMsg);
-            $('#modalAlert').fadeIn();
-
-            visual.modalToggle();
-            
-        } catch (error) {
-            console.log('error');
-        }
-    },
-
     indexToggle: function (e) {
-        
-        if (!indexState) {
+
+        if (!$('#indexWrap').is(':visible')) {
             // 열기
-            
-            modalToggle();
+
         } else {
             // 닫기
-            
-            modalToggle();
+
         }
     },
 
-    modalToggle: function () {
+    msgToggle: function (titleMsg, bodyMsg) {
 
-        if (!modalState) {
-            $('#onlyModal').fadeIn();
-            modalState = true;
+        if (!$('#modalWrap').is(':visible')) {
+            // 켜기
+            $('#modalAlert .modal-header h5').html(titleMsg);
+            $('#modalAlert .modal-header h5').attr('title', titleMsg);
+            $('#modalAlert .modal-body h6').html(bodyMsg);
+            $('#modalAlert .modal-body h6').attr('title', bodyMsg);
+            $('#modalWrap').fadeToggle();
+
         } else {
-            $('#onlyModal').fadeOut();
-            modalState = false;
+            // 끄기
+            $('#modalWrap').fadeToggle();
         }
 
-        // 재생이 끝나지 않았을 경우만 다시 재생
-        if (vod.currentTime <= vod.duration - 0.1) mCtrl.playToggle();
-    }
+        mCtrl.playToggle();
+    },
 }

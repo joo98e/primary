@@ -20,11 +20,11 @@ var create = {
         elem += '<span class="controlPanel control_pause" title="일시정지 버튼"></span>';
         elem += '<span class="controlPanel control_replay" title="되감기 버튼"></span>';
         elem += '</div>';
-        
+
         // 비디오 시간
         elem += '<div class="time nonTab">';
         elem += '<span class="now" title="현재 재생 시간">00 : 00</span>';
-        elem += '<span class="end" title="전체 재생 시간"></span>';
+        elem += '<span class="end" title="전체 재생 시간">00 : 00</span>';
         elem += '</div>';
 
         // 페이징
@@ -39,13 +39,13 @@ var create = {
         // 컨트롤 아이콘 추가
         document.getElementById('control').innerHTML = elem;
     },
-    
+
     media: function media(object) {
-        
+
         // 미디어 정하기
         if (object == 'mp4') {
             var media = '<video id="media" autoplay playsinline webkitplaysinline oncontextmenu="return false" onselectstart="return false" ondragstart="return false" title="콘텐츠 영상"></video>'
-        } else { 
+        } else {
             var media = '<audio id="media" autoplay playsinline webkitplaysinline oncontextmenu="return false" onselectstart="return false" ondragstart="return false" title="콘텐츠 음성"></audio>'
         }
         // 미디어 추가
@@ -59,13 +59,13 @@ var create = {
         // 학습목표 페이지
         if (curPage == guidePage) vod.src = '../media/guide' + '.' + object;
 
-        if (curPage == quizPage) { 
+        if (curPage == quizPage) {
             vod.src = '../media/quiz_' + numSet.set(quizInfo.length) + '.' + object;
         }
-        
+
         if (curPage == orgPage) vod.src = '../media/organize' + '.' + object;
-        if (curPage == pageTotal) vod.src = '../media/outro_' + courseChasi + '.' + object; 
-        
+        if (curPage == pageTotal) vod.src = '../media/outro_' + courseChasi + '.' + object;
+
         vod.addEventListener('ended', function () {
             if (playIconToggle) $('.control_vod .control_pause').hide();
             if (playIconToggle) $('.control_vod .control_play').show();
@@ -88,7 +88,7 @@ var create = {
 
     },
 
-    top: function top() { 
+    top: function top() {
         // 로고와 차시 생성
         var logoSrc = srcPath + 'img/top/course_logo.png';
         var chasiSrc = srcPath + 'img/top/chasi_' + courseChasi + '.png';
@@ -100,42 +100,34 @@ var create = {
         elem += '<img class="top_chasi" src="' + chasiSrc + '" alt="' + chasiName[curChasi - 1] + '">';
         target.html(elem);
     },
-
     
-    fadeBox: function () {
-        var elem = document.createElement('div');
-        elem.id = 'onlyModal';
-        document.getElementById('content').appendChild(elem);
+    msg: function () {
+        var modalWrap = document.createElement('div');
+        modalWrap.id = "modalWrap";
+        modalWrap.className = 'nonTab fadeBox';
+
+        var elem = '';
+        elem += '<div id="modalAlert" class="translate">';
+        elem += '   <div class="modal-header">';
+        elem += '       <h5></h5>';
+        elem += '   </div>';
+        elem += '   <div class="modal-body">';
+        elem += '       <h6></h6>';
+        elem += '   </div>';
+        elem += '</div>';
+
+        modalWrap.innerHTML = elem;
+        document.getElementById('content').appendChild(modalWrap);
     },
 
-    msgCreate: function () {
-        try {
-            var modalWrap = document.createElement('div');
-            modalWrap.id = "modalWrap nonTab";
-
-            var elem = '';
-            elem += '<div id="modalAlert" class="translate">';
-            elem += '   <div class="modal-header">';
-            elem += '       <h5></h5>';
-            elem += '   </div>';
-            elem += '   <div class="modal-body">';
-            elem += '       <h6></h6>';
-            elem += '   </div>';
-            elem += '</div>';
-    
-            modalWrap.innerHTML = elem;
-            document.getElementById('content').appendChild(modalWrap);
-
-        } catch (error) {
-            console.error();
-        }
-    },
-
-    indexCreate: function () {
+    index: function () {
         var elem = document.createElement('div');
+        elem.id = 'indexWrap';
+
         var elemStr = '';
         elemStr += '<div id="indexWrap">';
         elemStr += '    ';
         elemStr += '</div>';
     }
 };
+

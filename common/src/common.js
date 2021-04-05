@@ -14,6 +14,7 @@ var progress = false;
 
 // 웹 접근성 사용 여부(본 개발물 외에 추가되는 구조에는 작성할 때 alt, title 등 함께 작성 필요함)
 var webAccessibility = false;
+
 // 차시명 읽는 것, 컨트롤바 버튼 관련해서 접근성 텍스트 읽는 것
 
 // 차시명 입력 필요(인덱스, 차시 이미지 타이틀 등)
@@ -22,7 +23,7 @@ var chasiName = [
 ];
 
 // 과정명
-var courseTitle = "1.0.0";
+var courseTitle = "primary";
 
 // 과정 사이즈
 var courseWidth = 1280;
@@ -255,6 +256,7 @@ for (var cnt = 0; cnt < srcInfo.length; cnt++) {
 
 // ====================================================== 로드 후 메인 함수 실행
 window.addEventListener('load', function () {
+    
     // 로딩 후
     $('.loader').hide();
     $('#wrap').show();
@@ -268,10 +270,8 @@ window.addEventListener('load', function () {
     // 탑 이미지
     create.top();
 
-    // 페이드용 모달
-    create.fadeBox();
-
-    create.msgCreate();
+    // 메세지용
+    create.msg();
 
     // 페이지별 이벤트
     if (curPage == guidePage) guide.create();
@@ -294,9 +294,17 @@ window.addEventListener('load', function () {
     document.getElementsByClassName('control_currentP')[0].innerText = numSet.set(coursePage);
     document.getElementsByClassName('control_totalP')[0].innerText = numSet.set(pageTotal);
 
+    // fadeBox 이벤트
+    $('.fadeBox').on('click', function (e) {
+        if (e.target === e.currentTarget && $(this).css('opacity') === "1") {
+            $(this).fadeToggle();
+            if (!vod.ended) mCtrl.playToggle();
+        }
+    });
+    
+    // 웹 접근성 사용시
     try {
         if (webAccessibility) {
-            // 웹 접근성 사용시
             // tabIndex
             $("*").each(function (index) {
                 $(this).not('.nonTab').attr('tabIndex', index);

@@ -23,7 +23,7 @@ var quiz = {
             start.src = srcPath + 'img/quiz/btn_start.png';
             start.alt = '퀴즈 시작 버튼';
             start.addEventListener('click', quiz.start);
-            visual.hoverFn(start, '_enable');
+            visual.hover(start, '_enable');
         }
         // ------------------------------------ 결과보기 버튼
         if (btnState.result) {
@@ -32,7 +32,7 @@ var quiz = {
             result.src = srcPath + 'img/quiz/btn_result.png';
             result.alt = '결과 보기 버튼';
             result.addEventListener('click', quiz.result);
-            visual.hoverFn(result, '_enable');
+            visual.hover(result, '_enable');
         }
         // ------------------------------------ 확인 버튼
         var check = new Image();
@@ -40,7 +40,7 @@ var quiz = {
         check.src = srcPath + 'img/quiz/btn_check.png';
         check.alt = '정답 확인 버튼';
         check.addEventListener('click', quiz.check);
-        visual.hoverFn(check, '_enable');
+        visual.hover(check, '_enable');
         
         // ------------------------------------ 다음 버튼
         var next = new Image();
@@ -48,7 +48,7 @@ var quiz = {
         next.src = srcPath + 'img/quiz/btn_next.png';
         next.alt = '다음 문제 버튼';
         next.addEventListener('click', quiz.next);
-        visual.hoverFn(next, '_enable');
+        visual.hover(next, '_enable');
         
         // 퀴즈 컨테이너 생성
         var page_Quiz = document.createElement('div');
