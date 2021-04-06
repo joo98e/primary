@@ -29,6 +29,14 @@ var courseTitle = "primary";
 var courseWidth = 1280;
 var courseHeight = 720;
 
+// 인덱스 불릿 기호
+var indexChasiBullet = '';
+var indexTitleBullet = ' · ';
+var indexSubTitleWrapBullet = ' - ';
+// 인덱스 액티브시 색상
+var indexActiveBorderColor = '#98f2bb';
+var indexActiveTextColor = '#98f2bb';
+
 // 재생 일시정지  토글 여부
 var playIconToggle = false;
 
@@ -146,11 +154,27 @@ var srcInfo = [
         ],
     },
     {
+        tagName: 'link',
+        src: srcPath + 'src/Library/scrollbar/jquery.mCustomScrollbar.css',
+        attribute : [
+            ['rel', 'stylesheet'],
+            ['data-original-title', '스크롤바 플러그인'],
+        ],
+    },
+    {
         tagName: 'script',
         src: srcPath + 'src/Library/jquery-3.6.0.js',
         attribute: [
             ['type', 'text/javascript'],
             ['data-original-title', 'Jquery 연동 스크립트'],
+        ]
+    },
+    {
+        tagName: 'script',
+        src: srcPath + 'src/Library/scrollbar/jquery.mCustomScrollbar.js',
+        attribute: [
+            ['type', 'text/javascript'],
+            ['data-original-title', '스크롤바 플러그인(jquery)'],
         ]
     },
     {
@@ -260,6 +284,12 @@ window.addEventListener('load', function () {
     // 로딩 후
     $('.loader').hide();
     $('#wrap').show();
+
+    // 스크롤바
+    // $('body').mCustomScrollbar();
+
+    // 인덱스
+    create.index();
 
     // 컨트롤바
     create.control();

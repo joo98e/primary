@@ -75,7 +75,8 @@ ol, ul, li {
 }
 
 /* only fade */
-.fadeBox{
+
+.fadeBox {
     display: none;
     position: absolute;
     top: 0;
@@ -84,7 +85,7 @@ ol, ul, li {
     height: 100%;
     z-index: 99;
     cursor: pointer;
-    background : rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.5);
 }
 
 /* Alert */
@@ -143,19 +144,62 @@ ol, ul, li {
     height: 100%;
     cursor: pointer;
     background: rgba(0, 0, 0, 0.5) url(../img/modal/m_ready.png) 50% 50% no-repeat;
-    z-index: 99;
+    z-index: 101;
 }
 
-#onlyModal {
-    display: none;
+#indexWrap {
+    display: block;
+}
+
+.indexSubTitleWrap {
+    margin: 10px 0;
+}
+
+#indexWrap .h3, #indexWrap .indexSiblingWrap {
+    /* padding: 5px 10px; */
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#indexChasiName {
+    padding: 25px 0;
+    margin: 0 20px;
+}
+
+#indexPosition {
     position: absolute;
     top: 0;
-    left: 0;
-    width: 100%;
+    min-width: 400px;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 98;
-    cursor: pointer;
+    color: #b0aeb8;
+    background: #34333a;
+    cursor: default;
+}
+
+.indexTitle {
+    display: inline-block;
+    margin: 5px 10px;
+    text-indent: 10px;
+}
+
+.indexSubTitle {
+    display: inline-block;
+    margin: 5px 10px;
+    text-indent: 30px;
+}
+
+.indexTitle.active, .indexSubTitle.active {
+    color: #98f2bb;
+    background-color: #29282e;
+}
+
+.sibling_01 {
+    margin-top: 20px;
+}
+
+.indexSubTitle {
+    display: block;
+    padding-left: 5px 0 20px 5px
 }
 
 #page {

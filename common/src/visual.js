@@ -87,14 +87,19 @@ var visual = {
     },
 
     indexToggle: function (e) {
+        $('#indexPosition').css('left', '-' + indexCurrentWidth + 'px');
 
         if (!$('#indexWrap').is(':visible')) {
             // 열기
+            $('#indexWrap').fadeIn('ease', function () {
+                $('#indexPosition').animate({
+                    left: '0'
+                });
+            });
 
-        } else {
-            // 닫기
+            mCtrl.playToggle();
 
-        }
+        } 
     },
 
     msgToggle: function (titleMsg, bodyMsg) {

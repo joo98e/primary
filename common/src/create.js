@@ -1,3 +1,5 @@
+var indexCurrentWidth;
+
 
 // 공통으로 생성하는 요소
 
@@ -100,7 +102,7 @@ var create = {
         elem += '<img class="top_chasi" src="' + chasiSrc + '" alt="' + chasiName[curChasi - 1] + '">';
         target.html(elem);
     },
-    
+
     msg: function () {
         var modalWrap = document.createElement('div');
         modalWrap.id = "modalWrap";
@@ -125,9 +127,50 @@ var create = {
         elem.id = 'indexWrap';
 
         var elemStr = '';
-        elemStr += '<div id="indexWrap">';
-        elemStr += '    ';
+        elemStr += '<div id="indexWrap" class="fadeBox">';
+        elemStr += '<div id="indexPosition">';
+
+        // 차시명 추가(ref:common.js, 없을 시 생성하지 않음)
+        if (chasiName[curChasi - 1] !== undefined) {
+            elemStr += '<div id="indexChasiName" style="border-bottom: 1px solid ' + indexActiveBorderColor + ';">';
+            elemStr += '<h3 style="color:' + indexActiveTextColor + '">' + indexChasiBullet + chasiName[curChasi - 1] + '</h3>';
+            elemStr += '</div>';
+        }
+        
+        // TODO
+        // 페이지 번호를 받아와서 이동하는 것, 마우스 올렸을 때 호버 되는 것, 액티브 활성화하는 것
+
+        // 인덱스 목차 생성
+        for (var i = 0; i < indexInfo.length; i++) {
+
+            // 타이틀 생성
+            elemStr += '<div class="indexSiblingWrap sibling_' + numSet.set(i + 1) + '">'
+            elemStr += '<span class="indexTitle" data-page-Num=' + indexInfo[i].pageNum + '>' + indexTitleBullet + indexInfo[i].title + '</span>';
+
+            // 서브 타이틀 있을 경우 생성
+            if (indexInfo[i].subTitle) {
+                elemStr += '<div class="indexSubTitleWrap">';
+                for (var j = 0; j < indexInfo[i].subTitle.length; j++) {
+                    elemStr += '<span class="indexSubTitle indexSubTitle_' + numSet.set(j + 1) + '" data-page-Num=' + indexInfo[i].subTitle[j].pageNum + '>' + indexSubTitleWrapBullet + indexInfo[i].subTitle[j].subTitleName + '</span>';
+                }
+                elemStr += '</div>';
+            }
+
+            elemStr += '</div>'
+        }
+
         elemStr += '</div>';
+        elemStr += '</div>';
+        
+        // 인덱스 콘텐츠에 추가
+        $('#content').append(elemStr);
+
+        // 인덱스 animate를 위한 left 값 저장
+        indexCurrentWidth = Number($('#indexPosition').css('width').replace(/\D/g, ''));
+        
+        // 인덱스 하이드 처리
+        $('#indexWrap').hide();
+
     }
 };
 

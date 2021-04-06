@@ -14,9 +14,11 @@ pageInfo[0] = [
 pageInfo[1] = ['0', 'mp4', '', ];
 pageInfo[2] = ['0', 'mp3', '', ];
 pageInfo[3] = ['0', 'mp4', '', ];
-pageInfo[4] = ['1', 'mp4', '', ];
+pageInfo[4] = ['0', 'mp4', '', ];
 pageInfo[5] = ['0', 'mp4', '', ];
 pageInfo[6] = ['0', 'mp4', '', ];
+pageInfo[7] = ['1', 'mp4', '', ];
+pageInfo[8] = ['0', 'mp4', '', ];
 
 // 전체 페이지 수 (pageInfo 개수만큼)
 var pageTotal = Number(pageInfo.length - 1);
