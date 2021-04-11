@@ -4,7 +4,7 @@
 var indexInfo = [
     {
         title: '인트로',
-        pageNum : 1
+        pageNum : 1,
     },
     {
         title: '학습목표',

@@ -15,7 +15,7 @@
 
 window.addEventListener('load', function () {
     try {
-        if (location.href.split('.html')[0].substr(location.href.length - 10, 5).indexOf('index') != -1) {
+        if (location.href.split('.html')[0].substr(location.href.length - 10, 5).indexOf('index') === -1) {
             top.document.title = courseTitle;
             parent.document.querySelector('#Content').style.width = courseWidth + 'px';
             parent.document.querySelector('#Content').style.height = courseHeight + 'px';

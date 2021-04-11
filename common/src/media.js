@@ -45,6 +45,9 @@ var mCtrl = {
         // 퀴즈 페이지
         if (curPage == quizPage) quiz.appear();
 
+        // 정리하기 페이지
+        if (curPage == orgPage) org.appear();
+
     },
 
     gaugeMove: function (event) {
@@ -63,11 +66,18 @@ var mCtrl = {
             movePoint = vod.duration * percent;
             vod.currentTime = movePoint;
             vod.play();
+            // 클릭시에는 바로 가게 하기
+            $('.gaugeBar').css('width', movePoint)
 
-        } 
-
+        }
+        
         var widthVal = vod.currentTime / vod.duration * 100 + '%';
-        $('.gaugeBar').css('width', widthVal);
+        
+        $('.gaugeBar').css({
+            'width': widthVal,
+            'transition': '0.3s',
+            'transition-timing-function' : 'linear',
+        });
         
     },
 };

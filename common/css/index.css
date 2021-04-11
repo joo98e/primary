@@ -1,0 +1,48 @@
+#indexWrap {
+    display: block;
+}
+
+#indexWrap .h3, #indexWrap .indexSiblingWrap {
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#indexChasiName > h3{
+    cursor: text;
+}
+
+#indexChasiName {
+    padding: 25px 0;
+    margin: 0 20px;
+}
+
+#indexPosition {
+    position: absolute;
+    top: 0;
+    min-width: 400px;
+    height: 100%;
+    color: #b0aeb8;
+    background: #34333a;
+    cursor: default;
+}
+
+.indexTitle:hover, .indexSubTitle:hover, .indexTitle.active, .indexSubTitle.active {
+    color: #98f2bb;
+    background-color: #5a5a5a;
+}
+
+.sibling_01 {
+    margin-top: 20px;
+}
+
+.indexTitle {
+    display: block;
+    padding: 5px 10px;
+    text-indent: 10px;
+}
+
+.indexSubTitle {
+    display: block;
+    padding: 5px 10px;
+    text-indent: 30px;
+}

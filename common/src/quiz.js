@@ -14,7 +14,7 @@ var count = Number;
 var thisPage = Number;
 
 var quiz = {
-    create: function create() {
+    create: function () {
         
         // ------------------------------------ 시작 버튼
         if (btnState.start) {
@@ -162,8 +162,9 @@ var quiz = {
 
             // 정답 담기
             myAnswer[thisPage] = $(this).index() + 1;
+
             // active
-            $(this).find('img').src = fileSrc + fileName.split('.')[0] + '_over' + '.' + fileName.split('.')[1];
+            $(this).find('img').src = fileSrc + fileName.split('.')[0] + '_enable' + '.' + fileName.split('.')[1];
         });
 
     }

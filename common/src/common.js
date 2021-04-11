@@ -51,7 +51,7 @@ var vodPath = '../media/'
 
 // CSS 경로, js 파일 경로 추가
 var srcInfo = [
-    // 예외로 페이지에서 직접 연결
+    // 스크립트 로드 문제로 페이지에서 직접 연결
     // {   
     //     tagName: 'script',
     //     src: './js/pageInfo.js',
@@ -100,13 +100,21 @@ var srcInfo = [
         src: srcPath + 'css/layout.css',
         attribute: [
             ['rel', 'stylesheet'],
-            ['data-original-title', '콘텐츠 전반적인 layout'],
+            ['data-original-title', '전반적 콘텐츠 관련'],
+        ],
+    },
+    {
+        tagName: 'link',
+        src: srcPath + 'css/index.css',
+        attribute: [
+            ['rel', 'stylesheet'],
+            ['data-original-title', '인덱스 관련'],
         ],
     },
     {
         tagName: 'link',
         src: srcPath + 'css/control.css',
-        attribute : [
+        attribute: [
             ['rel', 'stylesheet'],
             ['data-original-title', '콘텐츠 제어 버튼 스타일 시트'],
         ],
@@ -114,7 +122,7 @@ var srcInfo = [
     {
         tagName: 'link',
         src: srcPath + 'css/top.css',
-        attribute : [
+        attribute: [
             ['rel', 'stylesheet'],
             ['data-original-title', '콘텐츠 차시명, 로고 등 영역의 스타일 시트'],
         ],
@@ -122,16 +130,16 @@ var srcInfo = [
     {
         tagName: 'link',
         src: srcPath + 'css/guide.css',
-        attribute : [
+        attribute: [
             ['rel', 'stylesheet'],
             ['data-original-title', '학습목표 페이지 스타일 시트'],
         ],
     },
     {
-        condition : quizPage,
+        condition: quizPage,
         tagName: 'link',
         src: srcPath + 'css/quiz.css',
-        attribute : [
+        attribute: [
             ['rel', 'stylesheet'],
             ['data-original-title', '퀴즈 페이지 스타일 시트'],
         ],
@@ -140,7 +148,7 @@ var srcInfo = [
         condition: orgPage,
         tagName: 'link',
         src: srcPath + 'css/org.css',
-        attribute : [
+        attribute: [
             ['rel', 'stylesheet'],
             ['data-original-title', '정리하기 페이지 스타일 시트'],
         ],
@@ -148,17 +156,9 @@ var srcInfo = [
     {
         tagName: 'link',
         src: srcPath + 'css/init.css',
-        attribute : [
+        attribute: [
             ['rel', 'stylesheet'],
             ['data-original-title', '초기화 스타일 시트'],
-        ],
-    },
-    {
-        tagName: 'link',
-        src: srcPath + 'src/Library/scrollbar/jquery.mCustomScrollbar.css',
-        attribute : [
-            ['rel', 'stylesheet'],
-            ['data-original-title', '스크롤바 플러그인'],
         ],
     },
     {
@@ -171,21 +171,13 @@ var srcInfo = [
     },
     {
         tagName: 'script',
-        src: srcPath + 'src/Library/scrollbar/jquery.mCustomScrollbar.js',
-        attribute: [
-            ['type', 'text/javascript'],
-            ['data-original-title', '스크롤바 플러그인(jquery)'],
-        ]
-    },
-    {
-        tagName: 'script',
         src: srcPath + 'src/transformScale.js',
         attribute: [
             ['type', 'text/javascript'],
             ['data-original-title', '모바일 크기 조절 스크립트'],
         ]
     },
-    
+
     {
         tagName: 'script',
         src: srcPath + 'src/number.js',
@@ -257,7 +249,7 @@ for (var cnt = 0; cnt < srcInfo.length; cnt++) {
 
     if (srcInfo[cnt].src.indexOf('js') != -1) elem.src = srcInfo[cnt].src;
     else if (srcInfo[cnt].src.indexOf('css') != -1) elem.href = srcInfo[cnt].src;
-    
+
     // rel, type 등 속성 부여
     if (srcInfo[cnt].attribute !== undefined) {
         for (var i = 0; i < srcInfo[cnt].attribute.length; i++) {
@@ -277,13 +269,19 @@ for (var cnt = 0; cnt < srcInfo.length; cnt++) {
     }
 }
 
+function devStart() {
+    $(document).on('click', function (e) {
+        console.log(e.target);
+    });
+}
 
 // ====================================================== 로드 후 메인 함수 실행
 window.addEventListener('load', function () {
-    
+
     // 로딩 후
     $('.loader').hide();
     $('#wrap').show();
+
 
     // 스크롤바
     // $('body').mCustomScrollbar();
@@ -306,7 +304,7 @@ window.addEventListener('load', function () {
     // 페이지별 이벤트
     if (curPage == guidePage) guide.create();
     if (curPage == quizPage) quiz.create();
-    // if (curPage == orgPage) org.create();
+    if (curPage == orgPage) org.create();
 
     // ready 사라지기
     document.getElementById('ready').addEventListener('click', mCtrl.playToggle);
@@ -316,9 +314,15 @@ window.addEventListener('load', function () {
     document.getElementsByClassName('control_pause')[0].addEventListener('click', mCtrl.playToggle);
     document.getElementsByClassName('control_replay')[0].addEventListener('click', mCtrl.replay);
     document.getElementsByClassName('controlGauge')[0].addEventListener('click', mCtrl.gaugeMove);
-    document.getElementsByClassName('control_prev')[0].addEventListener('click', visual.movePage);
-    document.getElementsByClassName('control_next')[0].addEventListener('click', visual.movePage);
+    document.getElementsByClassName('control_prev')[0].addEventListener('click', visual.prevPage);
+    document.getElementsByClassName('control_next')[0].addEventListener('click', visual.nextPage);
     document.getElementsByClassName('control_index')[0].addEventListener('click', visual.indexToggle);
+
+    // 특정 페이지 이동
+    $('.indexTitle, .indexSubTitle').on('click', function () {
+        var page = $(this).attr('data-page-num');
+        visual.movePage(page);
+    });
 
     // 페이지 수 삽입
     document.getElementsByClassName('control_currentP')[0].innerText = numSet.set(coursePage);
@@ -331,7 +335,7 @@ window.addEventListener('load', function () {
             if (!vod.ended) mCtrl.playToggle();
         }
     });
-    
+
     // 웹 접근성 사용시
     try {
         if (webAccessibility) {
@@ -352,7 +356,7 @@ window.addEventListener('load', function () {
 
         }
     } catch (error) {
-        
+
     }
 
 });

@@ -8,7 +8,7 @@ var create = {
         // control_bar 아이콘 추가
         var elem = '';
         // 인덱스
-        elem += '<span class="controlPanel control_index nonTab"></span>';
+        elem += '<span class="controlPanel control_index" title="목차"></span>';
 
         // 게이지
         // 컨트롤바 위에 있을 경우 true
@@ -142,20 +142,18 @@ var create = {
 
         // 인덱스 목차 생성
         for (var i = 0; i < indexInfo.length; i++) {
-
             // 타이틀 생성
             elemStr += '<div class="indexSiblingWrap sibling_' + numSet.set(i + 1) + '">'
-            elemStr += '<span class="indexTitle" data-page-Num=' + indexInfo[i].pageNum + '>' + indexTitleBullet + indexInfo[i].title + '</span>';
+            elemStr += '<span class="indexTitle move" data-page-num=' + indexInfo[i].pageNum + '>' + indexTitleBullet + indexInfo[i].title + '</span>';
 
             // 서브 타이틀 있을 경우 생성
             if (indexInfo[i].subTitle) {
                 elemStr += '<div class="indexSubTitleWrap">';
                 for (var j = 0; j < indexInfo[i].subTitle.length; j++) {
-                    elemStr += '<span class="indexSubTitle indexSubTitle_' + numSet.set(j + 1) + '" data-page-Num=' + indexInfo[i].subTitle[j].pageNum + '>' + indexSubTitleWrapBullet + indexInfo[i].subTitle[j].subTitleName + '</span>';
+                    elemStr += '<span class="indexSubTitle indexSubTitle_' + numSet.set(j + 1) + ' move" data-page-num=' + indexInfo[i].subTitle[j].pageNum + '>' + indexSubTitleWrapBullet + indexInfo[i].subTitle[j].subTitleName + '</span>';
                 }
                 elemStr += '</div>';
-            }
-
+            } 
             elemStr += '</div>'
         }
 
@@ -165,10 +163,22 @@ var create = {
         // 인덱스 콘텐츠에 추가
         $('#content').append(elemStr);
 
+        // 타이틀 active 추가
+        $('.indexTitle').each(function () {
+            if (Number($(this).attr('data-page-num')) === curPage) $(this).addClass('active');
+        });
+        // 서브 타이틀 active 추가
+        $('.indexSubTitle').each(function () {
+            if (Number($(this).attr('data-page-num')) === curPage) {
+                $(this).addClass('active');
+                $(this).parent().prev().addClass('active');
+            }
+        });
+
         // 인덱스 animate를 위한 left 값 저장
         indexCurrentWidth = Number($('#indexPosition').css('width').replace(/\D/g, ''));
         
-        // 인덱스 하이드 처리
+        // 인덱스 생성 후 하이드
         $('#indexWrap').hide();
 
     }

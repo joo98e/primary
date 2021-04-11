@@ -103,7 +103,7 @@ ol, ul, li {
     background-color: #FFF;
     -webkit-box-shadow: 0 15px 20px 12px rgba(0, 0, 0, 0.2);
     box-shadow: 0 15px 20px 12px rgba(0, 0, 0, 0.2);
-    cursor: auto;
+    cursor: default;
 }
 
 .modal-header h5 {
@@ -113,6 +113,7 @@ ol, ul, li {
     margin: 15px 20px;
     padding-bottom: 10px;
     border-bottom: 1px solid #D6D6D6;
+    cursor: text;
 }
 
 .modal-body h6 {
@@ -120,6 +121,7 @@ ol, ul, li {
     font-weight: 400;
     margin: 25px 30px;
     padding-bottom: 5px;
+    cursor: text;
 }
 
 #wrap {
@@ -147,60 +149,6 @@ ol, ul, li {
     z-index: 101;
 }
 
-#indexWrap {
-    display: block;
-}
-
-.indexSubTitleWrap {
-    margin: 10px 0;
-}
-
-#indexWrap .h3, #indexWrap .indexSiblingWrap {
-    /* padding: 5px 10px; */
-    font-weight: 600;
-    cursor: pointer;
-}
-
-#indexChasiName {
-    padding: 25px 0;
-    margin: 0 20px;
-}
-
-#indexPosition {
-    position: absolute;
-    top: 0;
-    min-width: 400px;
-    height: 100%;
-    color: #b0aeb8;
-    background: #34333a;
-    cursor: default;
-}
-
-.indexTitle {
-    display: inline-block;
-    margin: 5px 10px;
-    text-indent: 10px;
-}
-
-.indexSubTitle {
-    display: inline-block;
-    margin: 5px 10px;
-    text-indent: 30px;
-}
-
-.indexTitle.active, .indexSubTitle.active {
-    color: #98f2bb;
-    background-color: #29282e;
-}
-
-.sibling_01 {
-    margin-top: 20px;
-}
-
-.indexSubTitle {
-    display: block;
-    padding-left: 5px 0 20px 5px
-}
 
 #page {
     position: relative;

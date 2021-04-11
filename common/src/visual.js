@@ -11,57 +11,43 @@ var visual = {
 
     },
 
+    nextPage: function () {
+        if (progress) {
+            // 진도체크 있음
 
-    movePage: function () {
-        // 클릭된 클래스명으로 이벤트 구분
-        var state = String;
+        } else {
+            // 진도체크 없음
+            if (curPage == pageTotal) {
+                visual.msgToggle('안내', '마지막 페이지입니다.');
+            } else {
+                location.href = numSet.set(curPage + 1) + '.html';
+            }
+        }
+    },
 
-        var _this = this;
-        if (_this.classList.contains('control_prev')) state = 'prev';
-        if (_this.classList.contains('control_next')) state = 'next';
+    prevPage: function () {
+        if (progress) {
+            // 진도체크 있음
 
-        // 인덱스 기능 추가 후 적용 필요
-        // if (_this.classList.contains('')) state = 'move';
+        } else {
+            // 진도체크 없음
+            if (curPage == 1) {
+                visual.msgToggle('안내', '첫 페이지입니다.');
+            } else {
+                location.href = numSet.set(curPage - 1) + '.html';
+            }
+        }
+    },
 
-        switch (state) {
+    movePage: function (page) {
+        if (progress) {
+            // 진도체크 있음
 
-            // 다음 페이지
-            case 'next':
-                if (progress) {
-                    // 진도체크 있음
-
-                } else {
-                    // 진도체크 없음
-                    if (curPage == pageTotal) {
-                        visual.msgToggle('안내', '마지막 페이지입니다.');
-                    } else {
-                        location.href = numSet.set(curPage + 1) + '.html';
-                    }
-                }
-                break;
-
-            // 이전 페이지
-            case 'prev':
-
-                if (progress) {
-                    // 진도체크 있음
-
-                } else {
-                    // 진도체크 없음
-                    if (curPage == 1) {
-                        visual.msgToggle('안내', '첫 페이지입니다.');
-                    } else {
-                        location.href = numSet.set(curPage - 1) + '.html';
-                    }
-                }
-                break;
-
-            // 특정 페이지 이동(인덱스 등)
-            case 'move':
-                console.log('이동')
-
-            default:
-                break;
+        } else {
+            // 진도체크 없음
+            if (Number(page) !== curPage) {
+                location.href = numSet.set(page) + '.html';
+            }
         }
     },
 
@@ -98,7 +84,6 @@ var visual = {
             });
 
             mCtrl.playToggle();
-
         } 
     },
 
