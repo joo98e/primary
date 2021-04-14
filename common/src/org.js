@@ -63,11 +63,11 @@ var org = {
                 }
                 
                 if (orgBulletBoolean) {
-                    // 불릿 이미지 추가
+                    // 이미지형 불릿 추가
                     console.log(orgInfo[i][j][1]);
                     resultArr = '<img class="bulletImg bullet_' + numSet.set(orgInfo[i][j][0]) +  '" src="' + orgBulletSrc[(orgInfo[i][j][0]) - 1] + '" alt="정리하기 ' + (j + 1) + '번 내용" />' + orgInfo[i][j][1];
                 } else {
-                    // 불릿 문자 추가
+                    // 문자형 불릿 추가
                     if(orgBulletChar[(orgInfo[i][j][0]) - 1][0]) { // 숫자 사용 여부
                         resultArr = '<h4 class="bulletText bullet_' + numSet.set(orgInfo[i][j][0]) + '">' + (j + 1) + orgBulletChar[(orgInfo[i][j][0]) - 1][1] + '</h4>' + orgInfo[i][j][1];
                     }else{
@@ -78,13 +78,13 @@ var org = {
 
                 // 결과값 문자열 담기
                 elemArr += '<span class="orgInfo orgInfo_' + numSet.set(i + 1) + '_' + numSet.set(j + 1) + '">' + resultArr + '</span>' + '\n'
-
+                
             }
         }
         elemArr += '</div>'
         organizeWrap.innerHTML = elemArr;
         document.getElementById('page').appendChild(organizeWrap);
-        // console.log(elemArr);
+        
     },
 
     // 등장 씬

@@ -1,0 +1,22 @@
+
+{
+    "How to Use" : {
+        "Required module" : "snippets",
+        "Directory" : "C:/Users/MIRIM/AppData/Roaming/Code/User/snippets"
+    },
+    "Print to console": {
+        "prefix": "cslog",
+        "body": [
+            "console.log($1);"
+        ],
+        "description": "Log output to console"
+    },
+    "print Class": {
+        "prefix": "csthis",
+        "body": [
+            "console.log(this);",
+            "$2"
+        ],
+        "description": "Log output to this"
+    },
+}
