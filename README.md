@@ -1,18 +1,21 @@
-# Primitive
-Primitive PROTO dev
+# Primary
+Primary PROTO dev
 
----
-### 본 프로젝트는 LMS에 연동될 콘텐츠 개발물입니다.
----
+#### 추가 기능
+> 1) 정리하기 단락은 카운트되며, 카운트는 array의 길이로 정한다. array의 내용은 단락을 구분할 특수문자 기호이다.
+> 2) 프린트를 만들며, 프린트는 style을 append 하지않고, 개발자 도구로 볼 수 있도록 작성한다.
+> 3) 미디어 태그들은 전역적으로 관리될 수 있도록 each를 사용해 볼륨 조절 한다.
+> 4) new RegExp(/[一-龥]/gi);
+> 5) helpMe(); => 함수에 대한 간략 설명, 설정값 등 설명
+> 6) 구간반복, 마우스 오버시 썸네일
 
 #### git init
-
 > ```
 > git init
 > git remote add 사용자 Repository
-> ex) git remote add main https://github.com/joo98e/Primitive.git
-> ex) git remote add origin https://github.com/joo98e/Primitive.git
-> ex) git remote add master https://github.com/joo98e/Primitive.git
+> ex) git remote add main https://github.com/joo98e/repository.git
+> ex) git remote add origin https://github.com/joo98e/repository.git
+> ex) git remote add master https://github.com/joo98e/repository.git
 > ```
 
 ---
@@ -20,7 +23,7 @@ Primitive PROTO dev
 
 > ```
 > git clone Repository
-> ex) git clone https://github.com/joo98e/Primitive.git
+> ex) git clone https://github.com/joo98e/repository.git
 > ```
 
 ---
@@ -212,59 +215,40 @@ Primitive PROTO dev
 > 원격 저장소를 제거하고 관련된 브랜치도 제거하기
 > git remote rm <원격 저장소>
 > 위에 작성된 명령어들은 주로 사용될만한 명령어들이고 이외에도 git 의 명령어는 상당히 많다. 더 다양한 사용법들을 알아보고자 한다면 아래 링크에서 확인하면 된다.
-> Git - Reference
-> Quick reference guides: GitHub Cheat Sheet (PDF) | Visual Git Cheat Sheet (SVG | PNG)
-> git-scm.com
-> WRITTEN BY
-> 
-> Leopold (백중원)
-> 사람들에게 사랑받는 서비스를 만드는 게 목표이자 독서와 개발이 취미인 평범한 개발자. 소소한 내용들을 가끔씩 공유하고 있습니다.
-> Follow
-> 152
-> 
-> Some rights reserved
-> 152 
-> 
-> 
-> Git
-> Git Command
-> Github
-> More from Leopold (백중원)
-> Follow
-> 사람들에게 사랑받는 서비스를 만드는 게 목표이자 독서와 개발이 취미인 평범한 개발자. 소소한 내용들을 가끔씩 공유하고 있습니다.
-> More From Medium
-> Why Mark Zuckerberg Should Step Down as Facebook CEO
-> SFChronicle
-> 
-> South Korean Women Are Fighting to Take Off Their ‘Corsets’
-> The Establishment in The Establishment
-> 
-> 5 tips to make your JS code more communicative
-> Alen Vlahovljak in JavaScript in Plain English
-> 
-> Korea’s Coffee Culture
-> Jessica Toale in The Conscious Traveller
-> 
-> Improving the Reactivity System (feat. TOAST UI Grid)
-> TOAST UI
-> 
-> Notes from Seoul: The Cost of Being the Visitor
-> Rebecca Mqamelo
-> 
-> 10 Free Online Courses to learn DevOps for Beginners and Experienced Developers
-> javinpaul in Javarevisited
-> 
-> Branching Out and Deleting Branches
-> Jonelle Noelani Yacapin in Level Up Coding
-> 
-> About
-> Help
-> Legal
-> ```
+
 ---
-#### 추가 기능
-> 1) 정리하기 단락은 카운트되며, 카운트는 array의 길이로 정한다. array의 내용은 단락을 구분할 특수문자 기호이다.
-> 2) 프린트를 만들며, 프린트는 style을 append 하지않고, 개발자 도구로 볼 수 있도록 작성한다.
-> 3) 미디어 태그들은 전역적으로 관리될 수 있도록 each를 사용해 볼륨 조절 한다.
-> 4) var hanja = new RegExp(/[一-龥]/gi);
-> 5) helpMe(); => 함수에 대핞 간략 설명, 설정값 등 설명
+
+### sql 프로시저
+```
+-- DB 선택
+USE myboard;
+-- 구분 기호 설정
+DELIMITER $$
+-- 프로시저 있을 경우 삭제
+DROP PROCEDURE IF EXISTS myProc;
+-- 프로시저 생성
+CREATE PROCEDURE myProc()
+-- 시작
+BEGIN
+	DECLARE i INT DEFAULT 1; -- 변수할당
+    WHILE (i < 30) DO -- 와일 시작
+    INSERT INTO myboard.board(
+		writer,
+        title,
+        content,
+        hits
+    ) VALUES (
+		concat('글쓴이_', i),
+        concat('글제목_', i),
+        concat('글내용_', i),
+        i
+    );
+    SET i = i + 1; -- i 증가
+    END WHILE; -- 와일 끝
+END $$ -- 딜리미터 끝
+DELIMITER ; -- 구분 기호 변경
+
+-- 이 후, 프로시저 콜
+CALL myProc();
+SELECT * FROM board;
+```

@@ -9,18 +9,19 @@ var orgReplaceListUp = [
 // 들여쓸 단위(px)
 var orgParagraphLevel = 20;
 // 불릿 사용 여부(true 이미지 / false 문자형)
-var orgBulletBoolean = new Boolean(true);
+var orgBulletBoolean = false;
 // 단계별 이미지 불릿
 var orgBulletSrc = [
-    '<img class="bullet_01" src="../common/img/org/bullet_01.png" alt="정리하기 불릿1" />',
-    '<img class="bullet_02" src="../common/img/org/bullet_02.png" alt="정리하기 불릿2" />',
-    '<img class="bullet_03" src="../common/img/org/bullet_03.png" alt="정리하기 불릿3" />',
+    '../common/img/org/bullet_01.png',
+    '../common/img/org/bullet_02.png',
+    '../common/img/org/bullet_03.png',
 ];
 // 단계별 문자형 불릿
 var orgBulletChar = [
-    '. ',
-    '- ',
-    '· ',
+    // 숫자 사용 여부, 뒤에 올 문자열
+    [true, '. '],
+    [false, '- '],
+    [true, '· '],
 ];
 // 한자 감지
 var hanja = new RegExp(/[一-龥]/gi);
@@ -29,7 +30,7 @@ var hanja = new RegExp(/[一-龥]/gi);
 var org = {
     create: function () {
         // 최상단
-        var elemArr = '';
+        var elemArr = '<div id="orgTextWrap">';
         var organizeWrap = document.createElement('div');
         organizeWrap.id = "organizeWrap";
 
@@ -63,10 +64,16 @@ var org = {
                 
                 if (orgBulletBoolean) {
                     // 불릿 이미지 추가
-                    resultArr = orgBulletSrc[(orgInfo[i][j][0]) - 1] + orgInfo[i][j][1];
+                    console.log(orgInfo[i][j][1]);
+                    resultArr = '<img class="bulletImg bullet_' + numSet.set(orgInfo[i][j][0]) +  '" src="' + orgBulletSrc[(orgInfo[i][j][0]) - 1] + '" alt="정리하기 ' + (j + 1) + '번 내용" />' + orgInfo[i][j][1];
                 } else {
                     // 불릿 문자 추가
-                    resultArr = orgBulletChar[(orgInfo[i][j][0]) - 1] + orgInfo[i][j][1];
+                    if(orgBulletChar[(orgInfo[i][j][0]) - 1][0]) { // 숫자 사용 여부
+                        resultArr = '<h4 class="bulletText bullet_' + numSet.set(orgInfo[i][j][0]) + '">' + (j + 1) + orgBulletChar[(orgInfo[i][j][0]) - 1][1] + '</h4>' + orgInfo[i][j][1];
+                    }else{
+                        resultArr = orgBulletChar[(orgInfo[i][j][0]) - 1][1] + orgInfo[i][j][1];
+                    }
+                    
                 }
 
                 // 결과값 문자열 담기
@@ -74,13 +81,16 @@ var org = {
 
             }
         }
-
+        elemArr += '</div>'
         organizeWrap.innerHTML = elemArr;
         document.getElementById('page').appendChild(organizeWrap);
-        console.log(elemArr);
+        // console.log(elemArr);
     },
 
+    // 등장 씬
     appear: function () {
-        
+        if(vod.currentTime >= vod.duration - 3){
+            $('#orgTextWrap').fadeIn();
+        }
     }
 }

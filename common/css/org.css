@@ -9,6 +9,17 @@
     background: linear-gradient(to right, #734b6d, #42275a);
 }
 
+#orgTextWrap {
+    position: relative;
+    display: none;
+    top: 200px;
+    left: 100px;
+}
+
 .orgInfo {
     display: block;
+}
+
+.bulletText{
+    display : inline;
 }
