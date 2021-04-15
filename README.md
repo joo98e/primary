@@ -8,6 +8,22 @@ Primary PROTO dev
 > 4) new RegExp(/[一-龥]/gi);
 > 5) helpMe(); => 함수에 대한 간략 설명, 설정값 등 설명
 > 6) 구간반복, 마우스 오버시 썸네일
+> 7) ajax 다운로드
+> 8) ajax srt
+
+#### 추가
+```
+div.insertAdjacentHTML()
+'beforebegin'
+element 앞에 
+'afterbegin'
+element 안에 가장 첫번째 child
+'beforeend'
+element 안에 가장 마지막 child
+'afterend'
+element 뒤에
+
+```
 
 #### git init
 > ```

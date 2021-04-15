@@ -143,7 +143,8 @@ var quiz = {
 
     },
 
-    appear: function appear() {
+    // 등장 씬
+    appear: function () {
         if (vod.currentTime >= vod.duration - 1) {
             $('.btn_start').fadeIn();
         } else {
@@ -153,7 +154,7 @@ var quiz = {
 
     },
 
-    event: function event() {
+    event: function () {
         
         $('.choice').on('click', function () {
 

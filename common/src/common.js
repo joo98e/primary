@@ -180,10 +180,10 @@ var srcInfo = [
 
     {
         tagName: 'script',
-        src: srcPath + 'src/number.js',
+        src: srcPath + 'src/charSet.js',
         attribute: [
             ['type', 'text/javascript'],
-            ['data-original-title', '숫자 관련 함수 스크립트'],
+            ['data-original-title', '문자 치환 관련 함수 스크립트'],
         ]
     },
     {
@@ -325,8 +325,8 @@ window.addEventListener('load', function () {
     });
 
     // 페이지 수 삽입
-    document.getElementsByClassName('control_currentP')[0].innerText = numSet.set(coursePage);
-    document.getElementsByClassName('control_totalP')[0].innerText = numSet.set(pageTotal);
+    document.getElementsByClassName('control_currentP')[0].innerText = textSet.set(coursePage);
+    document.getElementsByClassName('control_totalP')[0].innerText = textSet.set(pageTotal);
 
     // fadeBox 이벤트
     $('.fadeBox').on('click', function (e) {

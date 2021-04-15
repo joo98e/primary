@@ -25,12 +25,12 @@ var guide = {
             // 탑 불릿
             var guideTopBullet = document.createElement('img');
             guideTopBullet.className = 'bullet';
-            guideTopBullet.src = srcPath + 'img/guide/guideTop_' + numSet.set(cnt + 1) + '.png';
+            guideTopBullet.src = srcPath + 'img/guide/guideTop_' + textSet.set(cnt + 1) + '.png';
             guideTopBullet.alt = (cnt + 1) + '번 ';
             // 바텀 불릿
             var guideBottomBullet = document.createElement('img');
             guideBottomBullet.className = 'bullet';
-            guideBottomBullet.src = srcPath + 'img/guide/guideBottom_' + numSet.set(cnt + 1) + '.png';
+            guideBottomBullet.src = srcPath + 'img/guide/guideBottom_' + textSet.set(cnt + 1) + '.png';
             guideBottomBullet.alt = (cnt + 1) + '번 ';
 
             // 탑 텍스트
@@ -56,6 +56,7 @@ var guide = {
         document.getElementById('page').appendChild(guideArea);
     },
 
+    // 등장 씬
     appear: function () {
         // fadeIn 시점
         if (vod.currentTime >= 2) {

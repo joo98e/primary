@@ -20,7 +20,7 @@ var visual = {
             if (curPage == pageTotal) {
                 visual.msgToggle('안내', '마지막 페이지입니다.');
             } else {
-                location.href = numSet.set(curPage + 1) + '.html';
+                location.href = textSet.set(curPage + 1) + '.html';
             }
         }
     },
@@ -34,7 +34,7 @@ var visual = {
             if (curPage == 1) {
                 visual.msgToggle('안내', '첫 페이지입니다.');
             } else {
-                location.href = numSet.set(curPage - 1) + '.html';
+                location.href = textSet.set(curPage - 1) + '.html';
             }
         }
     },
@@ -46,7 +46,7 @@ var visual = {
         } else {
             // 진도체크 없음
             if (Number(page) !== curPage) {
-                location.href = numSet.set(page) + '.html';
+                location.href = textSet.set(page) + '.html';
             }
         }
     },

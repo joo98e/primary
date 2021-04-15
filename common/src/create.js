@@ -56,13 +56,13 @@ var create = {
         // 미디어 변수 및 이벤트 할당
         vod = document.getElementById('media');
 
-        vod.src = vodPath + numSet.set(courseChasi) + '_' + numSet.set(coursePage) + '.' + object;
+        vod.src = vodPath + textSet.set(courseChasi) + '_' + textSet.set(coursePage) + '.' + object;
 
         // 학습목표 페이지
         if (curPage == guidePage) vod.src = '../media/guide' + '.' + object;
 
         if (curPage == quizPage) {
-            vod.src = '../media/quiz_' + numSet.set(quizInfo.length) + '.' + object;
+            vod.src = '../media/quiz_' + textSet.set(quizInfo.length) + '.' + object;
         }
 
         if (curPage == orgPage) vod.src = '../media/organize' + '.' + object;
@@ -82,8 +82,8 @@ var create = {
         vod.addEventListener('canplay', function () {
             vod.addEventListener('timeupdate', mCtrl.update);
 
-            var durationM = numSet.set(Math.floor(vod.duration / 60));
-            var durationS = numSet.set(Math.floor(vod.duration % 60));
+            var durationM = textSet.set(Math.floor(vod.duration / 60));
+            var durationS = textSet.set(Math.floor(vod.duration % 60));
 
             $('.time .end').text(durationM + ' : ' + durationS);
         });
@@ -143,14 +143,14 @@ var create = {
         // 인덱스 목차 생성
         for (var i = 0; i < indexInfo.length; i++) {
             // 타이틀 생성
-            elemStr += '<div class="indexSiblingWrap sibling_' + numSet.set(i + 1) + '">'
+            elemStr += '<div class="indexSiblingWrap sibling_' + textSet.set(i + 1) + '">'
             elemStr += '<span class="indexTitle move" data-page-num=' + indexInfo[i].pageNum + '>' + indexTitleBullet + indexInfo[i].title + '</span>';
 
             // 서브 타이틀 있을 경우 생성
             if (indexInfo[i].subTitle) {
                 elemStr += '<div class="indexSubTitleWrap">';
                 for (var j = 0; j < indexInfo[i].subTitle.length; j++) {
-                    elemStr += '<span class="indexSubTitle indexSubTitle_' + numSet.set(j + 1) + ' move" data-page-num=' + indexInfo[i].subTitle[j].pageNum + '>' + indexSubTitleWrapBullet + indexInfo[i].subTitle[j].subTitleName + '</span>';
+                    elemStr += '<span class="indexSubTitle indexSubTitle_' + textSet.set(j + 1) + ' move" data-page-num=' + indexInfo[i].subTitle[j].pageNum + '>' + indexSubTitleWrapBullet + indexInfo[i].subTitle[j].subTitleName + '</span>';
                 }
                 elemStr += '</div>';
             } 

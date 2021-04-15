@@ -31,21 +31,21 @@ var mCtrl = {
         $('#ready').hide();
 
         // 시간 삽입(현재)
-        var currentM = numSet.set(Math.floor(vod.currentTime / 60));
-        var currentS = numSet.set(Math.floor(vod.currentTime % 60));
+        var currentM = textSet.set(Math.floor(vod.currentTime / 60));
+        var currentS = textSet.set(Math.floor(vod.currentTime % 60));
 
         $('.time .now').text(currentM + ' : ' + currentS);
 
         // gauge width 값 조절
         mCtrl.gaugeMove(event);
 
-        // 학습목표 페이지
+        // 학습목표 페이지 등장 씬
         if (curPage == guidePage) guide.appear();
 
-        // 퀴즈 페이지
+        // 퀴즈 페이지 등장 씬
         if (curPage == quizPage) quiz.appear();
 
-        // 정리하기 페이지
+        // 정리하기 페이지 등장 씬
         if (curPage == orgPage) org.appear();
 
     },

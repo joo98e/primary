@@ -10,13 +10,14 @@
 }
 
 #orgTextWrap {
-    position: relative;
     display: none;
+    position: relative;
     top: 200px;
-    left: 100px;
+    padding: 10px;
+    box-sizing: border-box;
 }
 
-.orgInfo {
+.orgTitle {
     display: block;
 }
 

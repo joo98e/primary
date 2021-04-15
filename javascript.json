@@ -1,7 +1,7 @@
 
 {
     "How to Use" : {
-        "Required module" : "snippets",
+        "Required Extension" : "snippets",
         "Directory" : "C:/Users/MIRIM/AppData/Roaming/Code/User/snippets"
     },
     "Print to console": {
