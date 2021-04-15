@@ -1,16 +1,26 @@
+// 이미지용 객체
+var imageArr = new Image();
 
 // 들여쓸 단위(px)
 var orgParagraphLevel = 20;
-// 불릿 사용 여부(true 이미지 / false 문자형 / null 없음)
-var orgBulletBoolean = false;
+
 // 제목 불릿
-var orgMainBulletSrc = '';
+var orgMainBullet = {
+    // 불릿 사용 여부(true 이미지 / false 문자형 / null 없음)
+    use: 'image',
+    src: '../common/img/org/bullet_main.png'
+}
 // 세부 내용 단계별 이미지 불릿
-var orgBulletSrc = [
-    '../common/img/org/bullet_01.png',
-    '../common/img/org/bullet_02.png',
-    '../common/img/org/bullet_03.png',
-];
+var orgSubBullet = {
+    // 불릿 사용 여부(true 이미지 / false 문자형 / null 없음)
+    use: 'char',
+    src: [
+        '../common/img/org/bullet_01.png',
+        '../common/img/org/bullet_02.png',
+        '../common/img/org/bullet_03.png',
+    ]
+}
+
 // 단계별 문자형 불릿
 var orgBulletChar = [
     // 숫자 사용 여부, 뒤에 올 문자열
@@ -18,9 +28,6 @@ var orgBulletChar = [
     [false, '- '],
     [true, '· '],
 ];
-
-var beforeArr;
-var afterArr;
 
 var org = {
     create: function () {
@@ -34,35 +41,47 @@ var org = {
 
             // 페이지의 정리하기 단락만큼 반복
             for (var j = 0; j < orgInfo[i].length; j++) {
-                
+
                 elemArr += '<ul class="orgInfo_' + textSet.set(j + 1) + '">';
 
-                // 숫자 사용 여부에 따라
-                if (orgBulletBoolean === true) {
+                // 메인 제목 생성
+                if (orgMainBullet.use.toLowerCase() === 'image') {
                     // 이미지
-                    var imageArr = '<img class="bullet mainBullet"' +  ;
-                    elemArr += '<li class="orgTitle orgTitle_' + textSet.set(i + 1) + '">' + imageArr + textSet.substitutionChar(orgInfo[i][j].title) + '</li>';
-                } else if (orgBulletBoolean === false) {
+                    imageArr.className = 'bullet mainBullet';
+                    imageArr.src = orgMainBullet.src;
+                    elemArr += '<li class="orgTitle orgTitle_' + textSet.set(i + 1) + '">' + imageArr.outerHTML + '<span>' + textSet.substitutionChar(orgInfo[i][j].title) + '</span></li>';
+                } else if (!orgMainBullet.use.toLowerCase() === 'char') {
                     // 문자(숫자 등)
-
-                } else if (orgBulletBoolean === null) {
-                    elemArr += '<li class="orgTitle orgTitle_' + textSet.set(i + 1) + '">' + textSet.substitutionChar(orgInfo[i][j].title) + '</li>';
+                    elemArr += '<li class="orgTitle orgTitle_' + textSet.set(i + 1) + '">' +  + '<span>' + textSet.substitutionChar(orgInfo[i][j].title) + '</span></li>';
+                } else if (orgMainBullet.use === null) {
+                    // 사용하지 않음
+                    elemArr += '<li class="orgTitle orgTitle_' + textSet.set(i + 1) + '">' + '<span>' + textSet.substitutionChar(orgInfo[i][j].title) + '</span></li>';
+                } else {
+                    visual.msgToggle('ERROR', '불릿 정보를 수정해주세요.<br/>' + 'orgMainBullet use : ' + orgMainBullet.use);
+                    return;
                 }
-                
 
+                // 세부 내용 있을 경우
                 if (orgInfo[i][j].contents !== undefined) {
                     var target = orgInfo[i][j].contents;
                     for (var k = 0; k < target.length; k++) {
-                        
+
                         // 내용
-                        if (orgBulletBoolean) {
+                        if (orgSubBullet.use.toLowerCase() === 'image') {
                             // 이미지
-                            elemArr += '<li class="orgContent orgContent_' + textSet.set(k + 1) + '">' + textSet.substitutionChar(target[k].content) + '</li>'
-                        } else if (!orgBulletBoolean) {
+                            imageArr.className = 'subBullet';
+                            imageArr.src = orgSubBullet.src[target[k].level];
+
+                            elemArr += '<li class="orgContent orgContent_' + textSet.set(k + 1) + '">' + imageArr.outerHTML + '<span>' + textSet.substitutionChar(target[k].content) + '</span></li>'
+                        } else if (orgSubBullet.use.toLowerCase() === 'char') {
                             // 문자(숫자 등)
-                            
-                        } else if (orgBulletBoolean === null) {
-                            elemArr += '<li class="orgContent orgContent_' + textSet.set(k + 1) + '">' + textSet.substitutionChar(target[k].content) + '</li>'
+
+                        } else if (orgSubBullet.use === null) {
+                            // 사용하지 않음
+                            elemArr += '<li class="orgContent orgContent_' + textSet.set(k + 1) + '"><span>' + textSet.substitutionChar(target[k].content) + '</span></li>'
+                        } else {
+                            visual.msgToggle('ERROR', '불릿 정보를 수정해주세요.<br/>' + 'orgSubBullet.use : ' + orgSubBullet.use);
+                            return;
                         }
                     }
                 }

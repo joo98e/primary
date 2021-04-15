@@ -13,14 +13,21 @@
     display: none;
     position: relative;
     top: 200px;
-    padding: 10px;
+    padding: 10px 50px;
     box-sizing: border-box;
 }
 
-.orgTitle {
-    display: block;
+.orgTitle, .orgContent {
+    display: table;
 }
 
-.bulletText{
-    display : inline;
+.orgTitle>img, .orgTitle>span, .orgContent>img, .orgContent>span {
+    display: table-cell;
+    vertical-align: middle;
 }
+
+.bulletText {
+    display: inline;
+}
+
+.mainBullet {}
