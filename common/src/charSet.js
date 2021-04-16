@@ -49,5 +49,11 @@ var textSet = {
         } catch (error) {
             visual.msgToggle('ERROR', error);
         }
+    },
+
+    spaning: function (data, cls) {
+        var before = '<span class="' + cls + '">';
+        var after = '</span>';
+        return before + data + after;
     }
 }

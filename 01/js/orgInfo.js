@@ -11,7 +11,7 @@ var orgInfo = [
             contents: [
                 {
                     level : 1,
-                    content: '★내용2☆'
+                    content: '★내용1☆'
                 },
                 {
                     level: 2,
@@ -19,11 +19,11 @@ var orgInfo = [
                 },
                 {
                     level: 2,
-                    content: '내용3'
+                    content: '내용2'
                 },
                 {
-                    level : 1,
-                    content : '내용1'
+                    level : 3,
+                    content : '내용4'
                 },
             ],
         },
@@ -32,4 +32,33 @@ var orgInfo = [
             title: '제목2',
         },
     ],
+    // 2페이지
+    [
+        // 단락
+        {
+            title: '★제목1可鄭☆',
+            contents: [
+                {
+                    level: 1,
+                    content: '★내용1☆'
+                },
+                {
+                    level: 2,
+                    content: '내용2'
+                },
+                {
+                    level: 2,
+                    content: '내용2'
+                },
+                {
+                    level: 3,
+                    content: '내용4'
+                },
+            ],
+        },
+        // 단락
+        {
+            title: '제목2',
+        },
+    ]
 ];

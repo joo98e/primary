@@ -1,13 +1,17 @@
-.top_chasi{
+.top_chasi {
     position: absolute;
+    height: 46px;
     top: 0;
     left: 0;
     z-index: 98;
 }
 
-.top_logo{
+.top_logo {
     position: absolute;
+    width: 180px;
     top: 0;
     right: 0;
     z-index: 98;
 }
+
+의약품 QbD 이해 과정 특정페이지 무한로딩 오류 수정파일 전달
