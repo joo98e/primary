@@ -1,15 +1,11 @@
 
-//TODO 네온 버튼
-// https://www.youtube.com/watch?v=ex7jGbyFgpA
 
-// 수(n)
 var numSet = {
     set: function set(num) {
         return num < 10 ? '0' + num : String(num);
     }
 }
 
-// 콘텐츠(c)
 var c = {
     view: function view(num) {
         console.log(num)

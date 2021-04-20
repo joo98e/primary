@@ -1,4 +1,4 @@
-#page_Quiz {
+#quizContainer {
     display: none;
     position: absolute;
     top: 0;
@@ -71,6 +71,7 @@
 }
 
 .choice {
+    position: relative;
     display: table;
     font-weight: 700;
     cursor: pointer;
@@ -81,6 +82,17 @@
     display: table-cell;
     padding-right: 15px;
     vertical-align: middle;
+}
+
+.choice.on:after {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 6px;
+    display: block;
+    width: 25px;
+    height: 26px;
+    background: url(../img/quiz/check.png) 0 0 no-repeat;
 }
 
 .choice>.choiceSpan {

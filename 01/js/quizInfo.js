@@ -1,12 +1,15 @@
 
 // 퀴즈 정보
-// A : 객관식, B : OX, C : 주관식
+// 1: OX
+// 2 : 객관식
+// 3: 주관식
+
 var quizInfo = [
     // 1번
     {
-        title: '1번입니다.',
-        subTitle: '1번 부제입니다.',
-        answer: '3',
+        type : 1,
+        title: 'OX',
+        answer: [3, 2],
         choice: [
             '보기 1번입니다.',
             '보기 2번입니다.',
@@ -17,9 +20,10 @@ var quizInfo = [
     },
     // 2번
     {
-        title: '2번입니다.',
+        type : 2,
+        title: '객관식',
         subTitle: '2번 부제입니다.',
-        answer: '1',
+        answer: 1,
         choice: [
             '보기 1번입니다.',
             '보기 2번입니다.',
@@ -30,9 +34,10 @@ var quizInfo = [
     },
     // 3번
     {
-        title: '3번입니다.',
+        type: 2,
+        title: '주관식',
         subTitle: '3번 부제입니다.',
-        answer: '2',
+        answer: 2,
         choice: [
             '보기 1번입니다.',
             '보기 2번입니다.',

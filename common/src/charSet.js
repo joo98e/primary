@@ -1,5 +1,5 @@
 
-// 한자 감지
+// 한자 
 var hanja = new RegExp(/[一-龥]/gi);
 
 // ['치환전', '치환후']
@@ -20,6 +20,7 @@ var textSet = {
         return a < 10 ? String('0' + a) : String(a);
     },
 
+    // 수정 필요함 3글자이상일 때 안됨
     // 특정 문자 및 한자 치환
     substitutionChar: function (target) {
         try {

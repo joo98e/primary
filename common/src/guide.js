@@ -1,4 +1,5 @@
 var guide = {
+    // ------------------------------------ 학습목표 컨텐츠 생성 
     create: function () {
         // 가이드
         var guideArea = document.createElement('div');
@@ -56,7 +57,7 @@ var guide = {
         document.getElementById('page').appendChild(guideArea);
     },
 
-    // 등장 씬
+    // ------------------------------------ 학습목표 등장 씬
     appear: function () {
         // fadeIn 시점
         if (vod.currentTime >= 2) {

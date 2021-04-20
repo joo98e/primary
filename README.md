@@ -10,6 +10,8 @@ Primary PROTO dev
 > 6) 구간반복, 마우스 오버시 썸네일
 > 7) ajax 다운로드
 > 8) ajax srt
+> 9) TODO 네온 버튼
+>  - https://www.youtube.com/watch?v=ex7jGbyFgpA
 
 #### 추가
 ```

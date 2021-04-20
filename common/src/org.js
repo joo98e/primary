@@ -3,8 +3,8 @@ var imageArr = new Image();
 
 // 페이지 넘김 방법(slide, fade, ShowHide)
 // TODO
-var pageTechnic = 'slide';
-var thisPage = Number;
+var pagingTechnic = 'slide';
+var orgCurPage = Number;
 
 // 들여쓸 단위(px)
 var orgParagraphLevel = 20;
@@ -31,7 +31,7 @@ var orgSubBullet = {
         '../common/img/org/bullet_04.png'
     ],
     char: {
-        // 숫자 사용 여부, 뒤에 올 문자열
+        // 뒤에 올 문자열
         bullet: [
             '.',
             '-',
@@ -43,6 +43,7 @@ var orgSubBullet = {
 
 
 var org = {
+    // ------------------------------------ 정리하기 컨텐츠 생성 
     create: function () {
         // 최상단
         var elemArr = '<div id="orgTextWrap">';
@@ -97,7 +98,6 @@ var org = {
                             elemArr += '<li class="orgContent orgContent_' + textSet.set(k + 1) + '" style="margin-left:' + (target[k].level * orgParagraphLevel) + 'px;">' + imageArr.outerHTML + '<span>' + textSet.substitutionChar(target[k].content) + '</span></li>'
 
                         } else if (orgSubBullet.use.toLowerCase() === 'char') {
-                            // 숫자 없이 문자 불릿 사용
                             elemArr += '<li class="orgContent orgContent_' + textSet.set(k + 1) + '" style="margin-left:' + (target[k].level * orgParagraphLevel) + 'px;">' + orgSubBullet.char.bullet[(target[k].level) - 1] + '<span>' + textSet.substitutionChar(target[k].content) + '</span></li>'
 
                         } else if (orgSubBullet.use === 'null') {
@@ -123,7 +123,7 @@ var org = {
 
     },
 
-    // 등장 씬
+    // ------------------------------------ 정리하기 등장 씬
     appear: function () {
         if (vod.currentTime >= vod.duration - 3) {
             $('#orgTextWrap').fadeIn();
@@ -131,26 +131,3 @@ var org = {
     },
 
 }
-
-// // 치환 전 문자열
-                // beforeArr = orgInfo[i][j];
-                // // 치환 후 문자열
-                // afterArr;
-
-                // // 특정 문자 및 한자 치환
-                // beforeArr[1] = textSet.substitutionChar(beforeArr[1]);
-
-                // if (orgBulletBoolean) {
-                //     // 이미지형 불릿 추가
-                //     afterArr = '<img class="bulletImg bullet_' + textSet.set(beforeArr[0]) + '" src="' + orgBulletSrc[(beforeArr[0]) - 1] + '" alt="정리하기 ' + (j + 1) + '번 내용" />' + beforeArr[1];
-                // } else {
-                //     // 문자형 불릿 추가
-                //     if (orgBulletChar[(beforeArr[0]) - 1][0]) { // 숫자 사용 여부
-                //         afterArr = '<h4 class="bulletText bullet_' + textSet.set(beforeArr[0]) + '">' + (j + 1) + orgBulletChar[(beforeArr[0]) - 1][1] + '</h4>' + beforeArr[1];
-                //     } else {
-                //         afterArr = orgBulletChar[(beforeArr[0]) - 1][1] + beforeArr[1];
-                //     }
-                // }
-
-                // // 결과값 문자열 담기
-                // elemArr += '<span class="orgInfo orgInfo_' + textSet.set(i + 1) + '_' + textSet.set(j + 1) + '" style="margin-left:' + (orgInfo[i][j][0] * orgParagraphLevel) + 'px">' + afterArr + '</span>' + '\n'
