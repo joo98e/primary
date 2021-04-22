@@ -100,3 +100,19 @@
     font-size: 20px;
     vertical-align: middle;
 }
+
+/* OX */
+
+.btn_answer_wrap {
+    width: 548px;
+    margin: 0 auto;
+}
+
+.btn_type_1 {
+    width: 264px;
+    cursor: pointer;
+}
+
+.btn_answer_X{
+    margin-left: 20px;
+}

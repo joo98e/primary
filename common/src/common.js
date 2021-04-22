@@ -37,8 +37,14 @@ var indexSubTitleWrapBullet = ' - ';
 var indexActiveBorderColor = '#98f2bb';
 var indexActiveTextColor = '#98f2bb';
 
+
+// 컨트롤바 위에 게이지바
+var gaugePositionBol = true;
 // 재생 일시정지  토글 여부
-var playIconToggle = false;
+var playIconToggleBol = false;
+// 볼륨 조절 모양
+var NewVolumeBol = true;
+var volumeGetStyleLeft;
 
 // 미디어
 var vod;
@@ -239,8 +245,6 @@ var srcInfo = [
     },
 ];
 
-// 로딩
-
 
 // CSS, JS 태그
 for (var cnt = 0; cnt < srcInfo.length; cnt++) {
@@ -301,11 +305,14 @@ window.addEventListener('load', function () {
     // 메세지용
     create.msg();
 
+    // 볼륨 팝업
+    create.volume();
+
     // 페이지별 이벤트
     if (curPage == guidePage) guide.create();
     if (curPage == quizPage) quiz.create();
     if (curPage == orgPage) org.create();
-
+    
     // ready 사라지기
     document.getElementById('ready').addEventListener('click', mCtrl.playToggle);
 
@@ -314,10 +321,17 @@ window.addEventListener('load', function () {
     document.getElementsByClassName('control_pause')[0].addEventListener('click', mCtrl.playToggle);
     document.getElementsByClassName('control_replay')[0].addEventListener('click', mCtrl.replay);
     document.getElementsByClassName('controlGauge')[0].addEventListener('click', mCtrl.gaugeMove);
+    document.getElementsByClassName('volume_mute')[0].addEventListener('click', mCtrl.volumeControl);
+    document.getElementsByClassName('volume_close')[0].addEventListener('click', mCtrl.volumeControl);
+    document.getElementsByClassName('volume_gauge')[0].addEventListener('mousedown', mCtrl.volumeControl);
+    document.getElementsByClassName('volume_gauge')[0].addEventListener('mouseup', mCtrl.volumeControl);
+    document.getElementsByClassName('volume_gauge')[0].addEventListener('mousemove', mCtrl.volumeControl);
+    document.getElementsByClassName('volume_gauge')[0].addEventListener('mouseleave', mCtrl.volumeControl);
+    document.getElementsByClassName('control_volume')[0].addEventListener('click', visual.volumeAnimate);
     document.getElementsByClassName('control_prev')[0].addEventListener('click', visual.prevPage);
     document.getElementsByClassName('control_next')[0].addEventListener('click', visual.nextPage);
     document.getElementsByClassName('control_index')[0].addEventListener('click', visual.indexToggle);
-
+    
     // 특정 페이지 이동
     $('.indexTitle, .indexSubTitle').on('click', function () {
         var page = $(this).attr('data-page-num');

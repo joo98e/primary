@@ -11,9 +11,7 @@ var create = {
         elem += '<span class="controlPanel control_index" title="목차"></span>';
 
         // 게이지
-        // 컨트롤바 위에 있을 경우 true
-        var gaugeposition = true;
-        if (gaugeposition) elem += '<div class="controlGauge gaugeWrap gaugeTop nonTab"><div class="gaugeBar positionTop"></div></div>';
+        if (gaugePositionBol) elem += '<div class="controlGauge gaugeWrap gaugeTop nonTab"><div class="gaugeBar positionTop"></div></div>';
         else elem += '<div class="controlGauge gaugeWrap gaugeInner nonTab"><div class="gaugeBar positionInner"></div></div>';
 
         // 비디오 동작
@@ -21,13 +19,15 @@ var create = {
         elem += '<span class="controlPanel control_play" title="재생 버튼"></span>';
         elem += '<span class="controlPanel control_pause" title="일시정지 버튼"></span>';
         elem += '<span class="controlPanel control_replay" title="되감기 버튼"></span>';
+        elem += '<div class="controlPanel control_volume" title="볼륨 켜기, 끄기"></div>';
         elem += '</div>';
 
         // 비디오 시간
         elem += '<div class="time nonTab">';
-        elem += '<span class="now" title="현재 재생 시간">00 : 00</span>';
-        elem += '<span class="end" title="전체 재생 시간">00 : 00</span>';
+        elem += '   <span class="now" title="현재 재생 시간">00 : 00</span>';
+        elem += '   <span class="end" title="전체 재생 시간">00 : 00</span>';
         elem += '</div>';
+
 
         // 페이징
         elem += '<div class="control_paging nonTab">';
@@ -69,8 +69,8 @@ var create = {
         if (curPage == pageTotal) vod.src = '../media/outro_' + courseChasi + '.' + object;
 
         vod.addEventListener('ended', function () {
-            if (playIconToggle) $('.control_vod .control_pause').hide();
-            if (playIconToggle) $('.control_vod .control_play').show();
+            if (playIconToggleBol) $('.control_vod .control_pause').hide();
+            if (playIconToggleBol) $('.control_vod .control_play').show();
         });
 
         vod.addEventListener('error', function () {
@@ -181,6 +181,27 @@ var create = {
         // 인덱스 생성 후 하이드
         $('#indexWrap').hide();
 
+    },
+
+    volume: function () {
+        var elem = '';
+
+        if (NewVolumeBol) {
+    
+            elem += '<div class="volume_gaugeWrap nonTab">';
+            elem += '   <span class="volume_gauge transY nonTab">';
+            elem += '      <span class="volume_nowGauge nonTab"></span>';
+            elem += '   </span>';
+            elem += '   <div class="volumePanel_wrap">';
+            elem += '       <span class="controlPanel volume_mute">mute</span>';
+            elem += '       <span class="controlPanel volume_close"></span>';
+            elem += '   </div>';
+            elem += '</div>';
+    
+            $('#control').append(elem);
+        } else {
+            elem += '';
+        }
     }
 };
 

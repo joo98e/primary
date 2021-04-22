@@ -2,10 +2,8 @@
 Primary PROTO dev
 
 #### 추가 기능
-> 1) 정리하기 단락은 카운트되며, 카운트는 array의 길이로 정한다. array의 내용은 단락을 구분할 특수문자 기호이다.
 > 2) 프린트를 만들며, 프린트는 style을 append 하지않고, 개발자 도구로 볼 수 있도록 작성한다.
 > 3) 미디어 태그들은 전역적으로 관리될 수 있도록 each를 사용해 볼륨 조절 한다.
-> 4) new RegExp(/[一-龥]/gi);
 > 5) helpMe(); => 함수에 대한 간략 설명, 설정값 등 설명
 > 6) 구간반복, 마우스 오버시 썸네일
 > 7) ajax 다운로드
@@ -15,15 +13,24 @@ Primary PROTO dev
 
 #### 추가
 ```
-div.insertAdjacentHTML()
+div.insertAdjacentHTML('', target);
+
 'beforebegin'
 element 앞에 
+타켓 요소 전(형제레벨)에 생성- 시작 태그의 앞(형제 레벨로)
+
 'afterbegin'
 element 안에 가장 첫번째 child
+타켓 요소 다음(자식요소)에 생성 - 시작 태그의 뒤(자식 요소로)
+
 'beforeend'
 element 안에 가장 마지막 child
+타켓 요소 끝나는 태그 바로 직전(자식요소로)에 요소를 생성 - 종료 태그 앞(자식 요소로)
+
 'afterend'
 element 뒤에
+타켓 요소의 끝나는 태그 바로 다음(형제레벨)에 요소를 생성 - 종료 태그 뒤(형제 레벨로)
+
 
 ```
 

@@ -78,7 +78,7 @@ var quiz = {
             choiceBox.className = 'header_quiz quiz_choiceBox nonTab';
 
             titleImg.className = 'quiz_titleImg';
-            titleImg.src = srcPath + 'img/quiz/q' + (i + 1) + '.png';
+            titleImg.src = srcPath + 'img/quiz/title_q' + (i + 1) + '.png';
             titleImg.alt = (i + 1) + '번 문제';
             
             title.innerHTML = quizInfo[i].title;
@@ -87,17 +87,26 @@ var quiz = {
             
             
             if (quizInfo[i].type === 1) { // ----------------------------------------------- OX 문제
-                
-                var quizRight = document.createElement('img');
-                quizRight.className = 'quizRight';
-                quizRight.src = srcPath + 'img/quiz/quizRight.png';
+                var btn_answer_wrap = document.createElement('div');
+                btn_answer_wrap.className = 'btn_answer_wrap';
 
-                var quizWrong = document.createElement('img');
-                quizWrong.className = 'quizWrong';
-                quizWrong.src = srcPath + 'img/quiz/quizWrong.png';
+                // 정답 O
+                var btn_answer_O = new Image();
+                btn_answer_O.className = 'btn_type_1 btn_answer_O';
+                btn_answer_O.src = srcPath + 'img/quiz/btn_answer_O.png';
+                btn_answer_O.alt = '정답 O';
+                visual.hover(btn_answer_O, '_enable');
 
-                choiceBox.appendChild(quizRight);
-                choiceBox.appendChild(quizWrong);
+                // 정답 X
+                var btn_answer_X = new Image();
+                btn_answer_X.className = 'btn_type_1 btn_answer_X';
+                btn_answer_X.src = srcPath + 'img/quiz/btn_answer_X.png';
+                btn_answer_X.alt = '정답 X';
+                visual.hover(btn_answer_X, '_enable');
+
+                btn_answer_wrap.appendChild(btn_answer_O);
+                btn_answer_wrap.appendChild(btn_answer_X);
+                choiceBox.appendChild(btn_answer_wrap);
 
             } else if (quizInfo[i].type === 2) { // ---------------------------------------- 객관식 문제
 
@@ -128,7 +137,7 @@ var quiz = {
             }
             
             quizEq.appendChild(titleWrap);
-            if (quizInfo[i].subTitle != '' || quizInfo[i].subTitle != undefined) quizEq.appendChild(subTitle);
+            if (quizInfo[i].subTitle != undefined) quizEq.appendChild(subTitle);
 
             quizEq.appendChild(choiceBox);
             quizContainer.appendChild(quizEq);
@@ -143,17 +152,6 @@ var quiz = {
         quiz.event();
     },
 
-    isType1_create: function () {
-        
-    },
-
-    isType2_create: function () {
-        
-    },
-
-    isType3_create: function () {
-        
-    },
     // ------------------------------------ 퀴즈 시작
     start: function start() {
 
@@ -174,7 +172,7 @@ var quiz = {
         // 퀴즈 문제 탐색(다중 여부)
         answer.forEach(function (value, idx) {
             if (Array.isArray(value)) {
-
+                myAnswer[idx] = new Array();
             }
 
         });
@@ -211,28 +209,60 @@ var quiz = {
 
     event: function () {
 
+        // ---------------------------------------- 이벤트 | OX 문제 O 클릭
+        $('.btn_answer_O').click(function () {
+            myAnswer[quizCurPage] = 'O';
+        });
+
+        // ---------------------------------------- 이벤트 | OX 문제 X 클릭
+        $('.btn_answer_X').click(function () {
+            myAnswer[quizCurPage] = 'X';
+        });
+
         // ---------------------------------------- 이벤트 | 객관식 보기 클릭
         $('.choice').on('click', function () {
             
+            // 정답이 복수
             if (Array.isArray(answer[quizCurPage])) {
-                // 정답이 복수
 
-            } else {
-                // 정답이 단수
+                var target = $(this).index() + 1;
+                if (myAnswer[quizCurPage].indexOf(target) != -1) {
+                    return;
+                } else {
+                    myAnswer[quizCurPage].unshift(target);
+                }
+
+                if (myAnswer[quizCurPage].length > answer[quizCurPage].length) {
+                    myAnswer[quizCurPage].pop();
+                }
+
+                $(this).siblings().each(function (turn) {
+                    var criteria = $(this).index() + 1;
+                    if (myAnswer[quizCurPage].indexOf(criteria) === -1) {
+                        $(this).removeClass('on');
+                    } else {
+                        $(this).addClass('on');
+                    }
+                });
+
+                $(this).toggleClass('on');
+
+            }
+
+            // 정답이 단수
+            else {
                 myAnswer[quizCurPage] = $(this).index() + 1;
-    
-                // active
+                
+                $(this).siblings().removeClass('on');
                 $(this).toggleClass('on');
             }
 
-
         });
 
-        // ---------------------------------------- 이벤트 | 
-        // ---------------------------------------- 이벤트 | 
-        // ---------------------------------------- 이벤트 | 
-        // ---------------------------------------- 이벤트 | 
-        // ---------------------------------------- 이벤트 | 
+        // ---------------------------------------- 이벤트 | 주관식 제출 클릭
+        
+        // ---------------------------------------- 이벤트 | 다음 문제 클릭
+        // ---------------------------------------- 이벤트 | 결과 보기 클릭
         // ---------------------------------------- 이벤트 | 
 
     }

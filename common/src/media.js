@@ -1,5 +1,6 @@
-// media : m
-var indexState = false;
+var isMovingVolume = false;
+var isMovingVod = false;
+var volumePoint = Number;
 
 var mCtrl = {
 
@@ -10,12 +11,12 @@ var mCtrl = {
         
         if (vod.paused) {
             vod.play();
-            if (playIconToggle) $('.control_vod .control_pause').show();
-            if (playIconToggle) $('.control_vod .control_play').hide();
+            if (playIconToggleBol) $('.control_vod .control_pause').show();
+            if (playIconToggleBol) $('.control_vod .control_play').hide();
         } else {
             vod.pause();
-            if (playIconToggle) $('.control_vod .control_pause').hide();
-            if (playIconToggle) $('.control_vod .control_play').show();
+            if (playIconToggleBol) $('.control_vod .control_pause').hide();
+            if (playIconToggleBol) $('.control_vod .control_play').show();
         }
 
     },
@@ -80,4 +81,88 @@ var mCtrl = {
         });
         
     },
+
+    volumeControl: function (event) {
+
+        var _thisPosition = this.getBoundingClientRect();
+        var _parentVal = window.getComputedStyle(document.getElementsByClassName('volume_gauge')[0]);
+        var point;
+
+        // ------------------------------------------------------ mute
+        if (event.target.className.indexOf('mute') != -1) {
+            volumePoint = 0;
+            $('video, audio').prop('volume', volumePoint);
+        }
+
+        // ------------------------------------------------------ 닫기
+        else if (event.target.className.indexOf('close') != -1) {
+            visual.volumeAnimate();
+        }
+            
+        // ------------------------------------------------------ 드래그
+        else if (event.type == 'mousedown') {
+            isMovingVolume = true;
+
+            point = Number(event.clientX - Number(_thisPosition.left));
+            volumePoint = point / Number(_parentVal.getPropertyValue('width').replace(/\D/g, ''));
+        }
+        else if (isMovingVolume && event.type == 'mousemove') {
+
+            point = Number(event.clientX - Number(_thisPosition.left));
+            volumePoint = point / Number(_parentVal.getPropertyValue('width').replace(/\D/g, ''));
+        }
+            
+        else if (event.type == 'mouseup' || event.type == 'mouseleave') {
+            isMovingVolume = false;
+        }
+
+
+        // ------------------------------------------------------ 결과
+        if (volumePoint > 1) volumePoint = 1;
+        if (volumePoint < 0) volumePoint = 0;
+        $('.volume_nowGauge').css('width', (volumePoint * 100) + '%');
+        $('video, audio').prop('volume', volumePoint);
+    }
 };
+
+// gaugeMove
+// if (event.type == 'mousedown') {
+//     moveFlag = true;
+//     console.log('down');
+
+
+// }
+
+// if (event.type == 'mouseup') {
+//     moveFlag = false;
+//     console.log('mouseUp');
+
+//     if (!moveFlag) {
+//         // 클릭할 지점 재생
+//         var _thisPosition = this.getBoundingClientRect();
+//         var _parentVal = window.getComputedStyle(document.getElementsByClassName('controlGauge')[0]);
+//         var point = Number(event.clientX - Number(_thisPosition.left));
+//         var movePoint = Number;
+
+//         // 재생 비율
+//         var percent = point / Number(_parentVal.getPropertyValue('width').replace(/\D/g, ''));
+
+//         movePoint = vod.duration * percent;
+//         vod.currentTime = movePoint;
+//         vod.play();
+//         // 클릭시에는 바로 가게 하기
+//         $('.gaugeBar').css('width', movePoint)
+//     }
+// }
+
+// if (event.type == 'mousemove') {
+//     console.log('mouseMove');
+// }
+
+// var widthVal = vod.currentTime / vod.duration * 100 + '%';
+
+// $('.gaugeBar').css({
+//     'width': widthVal,
+//     'transition': '0.3s',
+//     'transition-timing-function': 'linear',
+// });

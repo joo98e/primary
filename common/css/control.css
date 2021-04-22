@@ -31,7 +31,7 @@
   position: relative;
   display: inline-block;
   height: 40px;
-  left: 500px;
+  left: 460px;
 }
 
 /* 비디오 시간 ---------------------------------------------------------------------------- */
@@ -156,7 +156,6 @@
   height: 10px;
   background-color: #57b8fe;
   transition: 0.3s;
-  transition-timing-function : linear;
 }
 
 /* 게이지바 컨트롤바 아래에 있을 경우 */
@@ -184,4 +183,84 @@
   height: 100%;
   transition: 0.5s;
   background-color: #57b8fe;
+}
+
+/* 볼륨 패널 */
+
+.volumeBar {
+  position: relative;
+  display: inline-block;
+  height: 40px;
+  left: 625px;
+  color: #fff;
+}
+
+.control_volume {
+  position: relative;
+  background: url('../img/control/footer_sound_on_disable.png') 50% 50% no-repeat;
+}
+
+.control_volume:hover {
+  background: url('../img/control/footer_sound_on_enable.png') 50% 50% no-repeat;
+}
+
+.volume_gaugeWrap {
+  display: none;
+  position: absolute;
+  top: -35px;
+  left: 655px;
+  width: 240px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: #E6E6E6;
+  opacity: 0;
+  box-shadow: 0px 14px 20px 1px #000;
+}
+
+.volume_gauge {
+  position: absolute;
+  display: inline-block;
+  top: 50%;
+  left: 10%;
+  width: 100px;
+  height: 5px;
+  background-color: #0e7b65;
+  cursor: pointer;
+}
+
+.volume_nowGauge {
+  position: absolute;
+  display: inline-block;
+  width: 50px;
+  height: 100%;
+  background-color: #57b8fe;
+}
+
+.volume_nowGauge:after {
+  content: '';
+  position: absolute;
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  right: -5px;
+  top: -3px;
+  background: url(../img/control/volume_dot.png) 0 0 no-repeat;
+  background-size: cover;
+}
+
+.volumePanel_wrap {
+  position: absolute;
+  width: 100px;
+  height: 40px;
+  right: 0;
+}
+
+.volume_mute {
+  /* background: url(../img/control/volume_mute.png) 50% 50% no-repeat; */
+  line-height: 40px;
+  float: left;
+}
+
+.volume_close {
+  background: url(../img/control/volume_close.png) 100% 50% no-repeat;
 }

@@ -37,7 +37,7 @@ var textSet = {
                 var char = String(target.match(hanja)).replace(/,/g, '');
                 // 태그 닫힘
                 var tagArrLast = '</span>';
-                // 한자 위치를 파악하기 위함
+                // 한자 위치
                 var charLength = Number(char.length);
                 var beforeIndexOf = target.indexOf(char[0]);
                 // 태그 취합

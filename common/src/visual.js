@@ -1,9 +1,8 @@
-
+var volumeGetStyleLeft;
 
 var visual = {
 
-    hide: function () {
-        var target = this;
+    hide: function (target) {
         target.style.display = 'none';
     },
 
@@ -104,4 +103,28 @@ var visual = {
 
         mCtrl.playToggle();
     },
+
+    volumeAnimate: function () {
+        if ($('.volume_gaugeWrap').is(':animated')) return;
+
+        volumeGetStyleLeft = Number($('.volume_gaugeWrap').css('left').replace(/\D/g, ''));
+        
+        if ($('.volume_gaugeWrap').is(':visible')) {
+            $('.volume_gaugeWrap').animate({
+                'left': volumeGetStyleLeft - 20 + 'px',
+                'opacity': '0'
+            }, function () {
+                $(this).hide();
+            });
+        } else {
+            $('.volume_gaugeWrap').show();
+            $('.volume_gaugeWrap').animate({
+                'left': volumeGetStyleLeft + 20 + 'px',
+                'opacity': '1'
+            });
+        }
+
+
+    },
+
 }
