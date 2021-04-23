@@ -71,6 +71,15 @@ var visual = {
         });
     },
 
+    fade: function () {
+        $('.fadeBox').on('click', function (e) {
+            if (e.target === e.currentTarget && $(this).css('opacity') === "1") {
+                $(this).fadeToggle();
+                if (!vod.ended) mCtrl.playToggle();
+            }
+        });
+    },
+
     indexToggle: function (e) {
         $('#indexPosition').css('left', '-' + indexCurrentWidth + 'px');
 
@@ -84,6 +93,13 @@ var visual = {
 
             mCtrl.playToggle();
         } 
+    },
+
+    indexMove: function () {
+        $('.indexTitle, .indexSubTitle').on('click', function () {
+            var page = $(this).attr('data-page-num');
+            visual.movePage(page);
+        });
     },
 
     msgToggle: function (titleMsg, bodyMsg) {
@@ -108,7 +124,7 @@ var visual = {
         if ($('.volume_gaugeWrap').is(':animated')) return;
 
         volumeGetStyleLeft = Number($('.volume_gaugeWrap').css('left').replace(/\D/g, ''));
-        
+
         if ($('.volume_gaugeWrap').is(':visible')) {
             $('.volume_gaugeWrap').animate({
                 'left': volumeGetStyleLeft - 20 + 'px',
@@ -127,4 +143,5 @@ var visual = {
 
     },
 
+    
 }

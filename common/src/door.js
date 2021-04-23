@@ -8,7 +8,7 @@ var numSet = {
 
 var c = {
     view: function view(num) {
-        console.log(num)
+
         window.open(numSet.set(num) + '/index.html', "_blank", "width=1280px height=720px");
     }
 }
@@ -33,7 +33,7 @@ var getBrowser = function () {
 
 }
 
-var deviceStateIsMobile = function () {
+var isMobilePlatform = function () {
     if (navigator.userAgent.match(/iPhone|iPad|iPod|Android|Windows CE|BlackBerry|Symbian|Windows Phone|webOS|Opera Mini|Opera Mobi|POLARIS|IEMobile|lgtelecom|nokia|SonyEricsson/i) != null
         || navigator.userAgent.match(/LG|SAMSUNG|Samsung/) != null) {
         return true;
@@ -43,7 +43,7 @@ var deviceStateIsMobile = function () {
     }
 }
 
-// 생성자
+// 생성
 var add = {
     // 타이틀 생성
     title: function title() {
@@ -84,7 +84,9 @@ var add = {
 
 
 // theme
-if (theme == 1) {
+if (isMobilePlatform()) {
+    document.write('<link rel="stylesheet" type="text/css" href="./common/css/door_mobile.css">');
+} else if (theme == 1) {
     document.write('<link rel="stylesheet" type="text/css" href="./common/css/door.css">');
 } else {
     document.write('<link rel="stylesheet" type="text/css" href="./common/css/door_white.css">');
@@ -94,6 +96,9 @@ if (theme == 1) {
 window.addEventListener('load', function () {
     document.title = docData.dotTitle;
 
+    if (isMobilePlatform) {
+
+    }
 
     // title 삽입 
     add.title();

@@ -29,6 +29,17 @@ var courseTitle = "primary";
 var courseWidth = 1280;
 var courseHeight = 720;
 
+// 사이즈 조절 필요한 곳 / courseWidth, courseHeight 적용됨
+var wrapArr = [
+    '#wrap',
+    '#ready',
+    '#media',
+    '#page',
+    '#quizContainer',
+    '#organizeContainer',
+    '.guideContainer',
+];
+
 // 인덱스 불릿 기호
 var indexChasiBullet = '';
 var indexTitleBullet = ' · ';
@@ -45,7 +56,7 @@ var playIconToggleBol = false;
 // 볼륨 조절 모양
 var NewVolumeBol = true;
 var volumeGetStyleLeft;
-
+var contentScale = 1;
 // 미디어
 var vod;
 
@@ -177,6 +188,14 @@ var srcInfo = [
     },
     {
         tagName: 'script',
+        src: srcPath + 'src/Library/jquery-ui.js',
+        attribute: [
+            ['type', 'text/javascript'],
+            ['data-original-title', 'Jquery UI 스크립트'],
+        ]
+    },
+    {
+        tagName: 'script',
         src: srcPath + 'src/transformScale.js',
         attribute: [
             ['type', 'text/javascript'],
@@ -282,10 +301,11 @@ function devStart() {
 // ====================================================== 로드 후 메인 함수 실행
 window.addEventListener('load', function () {
 
+    console.log(document.readyState);
+
     // 로딩 후
     $('.loader').hide();
     $('#wrap').show();
-
 
     // 스크롤바
     // $('body').mCustomScrollbar();
@@ -308,6 +328,9 @@ window.addEventListener('load', function () {
     // 볼륨 팝업
     create.volume();
 
+    // 효과음 컨테이너
+    create.soundContainer();
+
     // 페이지별 이벤트
     if (curPage == guidePage) guide.create();
     if (curPage == quizPage) quiz.create();
@@ -323,32 +346,23 @@ window.addEventListener('load', function () {
     document.getElementsByClassName('controlGauge')[0].addEventListener('click', mCtrl.gaugeMove);
     document.getElementsByClassName('volume_mute')[0].addEventListener('click', mCtrl.volumeControl);
     document.getElementsByClassName('volume_close')[0].addEventListener('click', mCtrl.volumeControl);
-    document.getElementsByClassName('volume_gauge')[0].addEventListener('mousedown', mCtrl.volumeControl);
-    document.getElementsByClassName('volume_gauge')[0].addEventListener('mouseup', mCtrl.volumeControl);
-    document.getElementsByClassName('volume_gauge')[0].addEventListener('mousemove', mCtrl.volumeControl);
-    document.getElementsByClassName('volume_gauge')[0].addEventListener('mouseleave', mCtrl.volumeControl);
     document.getElementsByClassName('control_volume')[0].addEventListener('click', visual.volumeAnimate);
     document.getElementsByClassName('control_prev')[0].addEventListener('click', visual.prevPage);
     document.getElementsByClassName('control_next')[0].addEventListener('click', visual.nextPage);
     document.getElementsByClassName('control_index')[0].addEventListener('click', visual.indexToggle);
     
     // 특정 페이지 이동
-    $('.indexTitle, .indexSubTitle').on('click', function () {
-        var page = $(this).attr('data-page-num');
-        visual.movePage(page);
-    });
+    visual.indexMove();
+
+    // 볼륨 드래그
+    mCtrl.volumeDraggable();
 
     // 페이지 수 삽입
     document.getElementsByClassName('control_currentP')[0].innerText = textSet.set(coursePage);
     document.getElementsByClassName('control_totalP')[0].innerText = textSet.set(pageTotal);
 
     // fadeBox 이벤트
-    $('.fadeBox').on('click', function (e) {
-        if (e.target === e.currentTarget && $(this).css('opacity') === "1") {
-            $(this).fadeToggle();
-            if (!vod.ended) mCtrl.playToggle();
-        }
-    });
+    visual.fade();
 
     // 웹 접근성 사용시
     try {
@@ -374,3 +388,11 @@ window.addEventListener('load', function () {
     }
 
 });
+
+
+// ---------------------------------------------------------------
+// Thanks to, KevanGC
+// From: http://soundbible.com/1645-Pling.html
+// Distributor: 저작권 걱정없는 유튜브용 음원 & 무료 효과음 서비스 ‘뮤팟’
+// https://www.mewpot.com
+// ---------------------------------------------------------------

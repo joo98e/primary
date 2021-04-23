@@ -220,7 +220,7 @@
 .volume_gauge {
   position: absolute;
   display: inline-block;
-  top: 50%;
+  top: 35%;
   left: 10%;
   width: 100px;
   height: 5px;
@@ -231,19 +231,17 @@
 .volume_nowGauge {
   position: absolute;
   display: inline-block;
-  width: 50px;
   height: 100%;
   background-color: #57b8fe;
 }
 
-.volume_nowGauge:after {
-  content: '';
+.volume_dragBall {
   position: absolute;
   display: inline-block;
   width: 12px;
   height: 12px;
-  right: -5px;
   top: -3px;
+  left: 45%;
   background: url(../img/control/volume_dot.png) 0 0 no-repeat;
   background-size: cover;
 }

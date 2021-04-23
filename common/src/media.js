@@ -1,6 +1,7 @@
-var isMovingVolume = false;
-var isMovingVod = false;
-var volumePoint = Number;
+// 볼륨
+var volumeLevel = Number;
+// 오디오 컨테이너
+var soundContainer = new Array();
 
 var mCtrl = {
 
@@ -83,86 +84,73 @@ var mCtrl = {
     },
 
     volumeControl: function (event) {
-
-        var _thisPosition = this.getBoundingClientRect();
-        var _parentVal = window.getComputedStyle(document.getElementsByClassName('volume_gauge')[0]);
-        var point;
-
         // ------------------------------------------------------ mute
         if (event.target.className.indexOf('mute') != -1) {
-            volumePoint = 0;
-            $('video, audio').prop('volume', volumePoint);
+            volumeLevel = 0;
+            $('video, audio').prop('volume', volumeLevel);
+            $('.volume_dragBall').css('left', '0');
         }
 
         // ------------------------------------------------------ 닫기
         else if (event.target.className.indexOf('close') != -1) {
             visual.volumeAnimate();
         }
-            
-        // ------------------------------------------------------ 드래그
-        else if (event.type == 'mousedown') {
-            isMovingVolume = true;
+    },
 
-            point = Number(event.clientX - Number(_thisPosition.left));
-            volumePoint = point / Number(_parentVal.getPropertyValue('width').replace(/\D/g, ''));
+    volumeDraggable: function () {
+        
+        $('.volume_dragBall').draggable({
+            axis: "x",
+            scroll: false,
+            containment: ".volume_gauge",
+            start: function () {
+                
+            },
+            drag: function () {
+                var volumeWidth = Number(window.getComputedStyle(document.getElementsByClassName('volume_dragBall')[0], null).width.split("px")[0]);
+                var volumeLeft = Number(window.getComputedStyle(document.getElementsByClassName('volume_dragBall')[0], null).left.split("px")[0]);
+                var volumeWrapWidth = Number(window.getComputedStyle(document.getElementsByClassName('volume_gauge')[0], null).width.split("px")[0]) - volumeWidth;
+                volumeLevel = (volumeLeft / volumeWrapWidth).toFixed(2);
+                $('video, audio').prop('volume', volumeLevel);
+            },
+            stop: function () {
+                
+            }
+        });
+    },
+
+    audio: function (a) {
+        this.prototype = {
+            init: function (fileName) {
+                this.path = '../common/sound/';
+                this.type = '.mp3';
+
+                this.elem = $('<audio class="sound_' + textSet.set(soundContainer.length + 1) + '"width="0" height="0">Your browser does not support HTML5 video.</audio>');
+                this.elem.controls = false;
+
+                $('#soundContainer').append(this.elem);
+                soundContainer.push(this.elem);
+
+                var audioElem = document.getElementsByClassName('sound_' + textSet.set(soundContainer.length))[0];
+
+                // 할당
+                audioElem.volume = 0.5;
+                audioElem.src = this.path + fileName + this.type;
+                audioElem.play();
+
+                // 종료
+                audioElem.onended = function () {
+                    this.remove();
+                    soundContainer.pop();
+                }
+            }
         }
-        else if (isMovingVolume && event.type == 'mousemove') {
-
-            point = Number(event.clientX - Number(_thisPosition.left));
-            volumePoint = point / Number(_parentVal.getPropertyValue('width').replace(/\D/g, ''));
-        }
-            
-        else if (event.type == 'mouseup' || event.type == 'mouseleave') {
-            isMovingVolume = false;
-        }
+    },
 
 
-        // ------------------------------------------------------ 결과
-        if (volumePoint > 1) volumePoint = 1;
-        if (volumePoint < 0) volumePoint = 0;
-        $('.volume_nowGauge').css('width', (volumePoint * 100) + '%');
-        $('video, audio').prop('volume', volumePoint);
-    }
 };
 
-// gaugeMove
-// if (event.type == 'mousedown') {
-//     moveFlag = true;
-//     console.log('down');
-
-
-// }
-
-// if (event.type == 'mouseup') {
-//     moveFlag = false;
-//     console.log('mouseUp');
-
-//     if (!moveFlag) {
-//         // 클릭할 지점 재생
-//         var _thisPosition = this.getBoundingClientRect();
-//         var _parentVal = window.getComputedStyle(document.getElementsByClassName('controlGauge')[0]);
-//         var point = Number(event.clientX - Number(_thisPosition.left));
-//         var movePoint = Number;
-
-//         // 재생 비율
-//         var percent = point / Number(_parentVal.getPropertyValue('width').replace(/\D/g, ''));
-
-//         movePoint = vod.duration * percent;
-//         vod.currentTime = movePoint;
-//         vod.play();
-//         // 클릭시에는 바로 가게 하기
-//         $('.gaugeBar').css('width', movePoint)
-//     }
-// }
-
-// if (event.type == 'mousemove') {
-//     console.log('mouseMove');
-// }
-
-// var widthVal = vod.currentTime / vod.duration * 100 + '%';
-
-// $('.gaugeBar').css({
-//     'width': widthVal,
-//     'transition': '0.3s',
-//     'transition-timing-function': 'linear',
-// });
+var soundEffect =  function (fileName) {
+    var effect = new mCtrl.audio();
+    effect.prototype.init(fileName);
+}

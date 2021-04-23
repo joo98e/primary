@@ -86,6 +86,10 @@ var create = {
             var durationS = textSet.set(Math.floor(vod.duration % 60));
 
             $('.time .end').text(durationM + ' : ' + durationS);
+
+            // 기본 볼륨
+            volumeLevel = 0.5;
+            $('video, audio').prop('volume', volumeLevel);
         });
 
     },
@@ -191,6 +195,7 @@ var create = {
             elem += '<div class="volume_gaugeWrap nonTab">';
             elem += '   <span class="volume_gauge transY nonTab">';
             elem += '      <span class="volume_nowGauge nonTab"></span>';
+            elem += '      <span class="volume_dragBall nonTab"></span>';
             elem += '   </span>';
             elem += '   <div class="volumePanel_wrap">';
             elem += '       <span class="controlPanel volume_mute">mute</span>';
@@ -202,6 +207,13 @@ var create = {
         } else {
             elem += '';
         }
+    },
+
+    soundContainer: function () {
+        var elem = '';
+
+        elem = '<div id="soundContainer"></div>';
+        $('#page').append(elem);
     }
 };
 

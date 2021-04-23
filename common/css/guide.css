@@ -1,4 +1,4 @@
-.guideArea {
+.guideContainer {
   position: relative;
   top: 0;
   left: 0;
@@ -44,7 +44,7 @@
   line-height: 40px;
 }
 
-.guideArea .bullet {
+.guideContainer .bullet {
   position: absolute;
   top: 6px;
   left: -35px;

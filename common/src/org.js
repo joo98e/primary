@@ -47,8 +47,8 @@ var org = {
     create: function () {
         // 최상단
         var elemArr = '<div id="orgTextWrap">';
-        var organizeWrap = document.createElement('div');
-        organizeWrap.id = "organizeWrap";
+        var organizeContainer = document.createElement('div');
+        organizeContainer.id = "organizeContainer";
 
         // 페이지만큼 반복
         for (var i = 0; i < orgInfo.length; i++) {
@@ -117,8 +117,8 @@ var org = {
         }
 
         elemArr += '</div>'
-        organizeWrap.innerHTML = elemArr;
-        document.getElementById('page').appendChild(organizeWrap);
+        organizeContainer.innerHTML = elemArr;
+        document.getElementById('page').appendChild(organizeContainer);
         console.log(elemArr)
 
     },

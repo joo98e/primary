@@ -2,9 +2,9 @@ var guide = {
     // ------------------------------------ 학습목표 컨텐츠 생성 
     create: function () {
         // 가이드
-        var guideArea = document.createElement('div');
-        guideArea.className = 'guideArea';
-        guideArea.title = '콘텐츠 학습 목표 영역';
+        var guideContainer = document.createElement('div');
+        guideContainer.className = 'guideContainer';
+        guideContainer.title = '콘텐츠 학습 목표 영역';
 
         // 탑 영역
         var guideTopArea = document.createElement('div');
@@ -52,9 +52,9 @@ var guide = {
         }
 
         // 결과
-        guideArea.appendChild(guideTopArea);
-        guideArea.appendChild(guideBottomArea);
-        document.getElementById('page').appendChild(guideArea);
+        guideContainer.appendChild(guideTopArea);
+        guideContainer.appendChild(guideBottomArea);
+        document.getElementById('page').appendChild(guideContainer);
     },
 
     // ------------------------------------ 학습목표 등장 씬
