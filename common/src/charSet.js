@@ -1,6 +1,9 @@
 
 // 한자 
-var hanja = new RegExp(/[一-龥]/gi);
+var hanja = new RegExp(/[一-龥]|六/gi);
+// [一 - 龥]" 범위는 유니코드의 "CJK Unified Ideographs" 범위(4e00 ~ 9fff)의 일부(4e00 ~ 9fa5)
+// '六'의 경우는 유니코드의 "CJK Compatibility ideographs" 범위(f900 ~faff)에 해당하는 글자
+// 추가로 발견되는 한자들은 정규식에 추가해야함.
 
 // ['치환전', '치환후']
 var charReplaceListUp = [
@@ -20,7 +23,6 @@ var textSet = {
         return a < 10 ? String('0' + a) : String(a);
     },
 
-    // 수정 필요함 3글자이상일 때 안됨
     // 특정 문자 및 한자 치환
     substitutionChar: function (target) {
         try {

@@ -133,15 +133,16 @@ var visual = {
                 $(this).hide();
             });
         } else {
-            $('.volume_gaugeWrap').show();
-            $('.volume_gaugeWrap').animate({
+            $('.volume_gaugeWrap').show().animate({
                 'left': volumeGetStyleLeft + 20 + 'px',
                 'opacity': '1'
             });
         }
-
-
     },
+
+    fullScreen: function (e) {
+        
+    }
 
     
 }

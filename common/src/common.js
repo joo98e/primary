@@ -196,6 +196,14 @@ var srcInfo = [
     },
     {
         tagName: 'script',
+        src: srcPath + 'src/Library/jquery-fullscreen-min.js',
+        attribute: [
+            ['type', 'text/javascript'],
+            ['data-original-title', 'Jquery FullScreen 스크립트'],
+        ]
+    },
+    {
+        tagName: 'script',
         src: srcPath + 'src/transformScale.js',
         attribute: [
             ['type', 'text/javascript'],
@@ -208,7 +216,7 @@ var srcInfo = [
         src: srcPath + 'src/charSet.js',
         attribute: [
             ['type', 'text/javascript'],
-            ['data-original-title', '문자 치환 관련 함수 스크립트'],
+            ['data-original-title', '문자 치환 함수 스크립트'],
         ]
     },
     {
@@ -350,12 +358,16 @@ window.addEventListener('load', function () {
     document.getElementsByClassName('control_prev')[0].addEventListener('click', visual.prevPage);
     document.getElementsByClassName('control_next')[0].addEventListener('click', visual.nextPage);
     document.getElementsByClassName('control_index')[0].addEventListener('click', visual.indexToggle);
+    document.getElementsByClassName('control_fullScreen')[0].addEventListener('click', visual.fullScreen);
     
     // 특정 페이지 이동
     visual.indexMove();
 
     // 볼륨 드래그
     mCtrl.volumeDraggable();
+
+    // 풀스크린
+    
 
     // 페이지 수 삽입
     document.getElementsByClassName('control_currentP')[0].innerText = textSet.set(coursePage);

@@ -40,7 +40,7 @@
   position: relative;
   display: inline-block;
   height: 40px;
-  left: 575px;
+  left: 545px;
   color: #fff;
 }
 
@@ -70,6 +70,10 @@
   background: url(../img/control/footer_pause_disable.png) 50% 50% no-repeat;
 }
 
+.control_fullScreen {
+  background: url(../img/control/footer_fullscreen_disable.png) 50% 50% no-repeat;
+}
+
 .control_replay {
   right: 20px;
   background: url(../img/control/footer_replay_disable.png) 50% 50% no-repeat;
@@ -87,13 +91,17 @@
   background: url(../img/control/footer_replay_enable.png) 50% 50% no-repeat;
 }
 
+.control_fullScreen:hover {
+  background: url(../img/control/footer_fullscreen_enable.png) 50% 50% no-repeat;
+}
+
 /* 페이지 제어 ---------------------------------------------------------------------------- */
 
 .control_paging {
   position: relative;
   display: inline-block;
   height: 40px;
-  left: 730px;
+  left: 690px;
 }
 
 .control_paging>span {
