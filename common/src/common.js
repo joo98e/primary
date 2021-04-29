@@ -373,8 +373,14 @@ window.addEventListener('load', function () {
     document.getElementsByClassName('control_currentP')[0].innerText = textSet.set(coursePage);
     document.getElementsByClassName('control_totalP')[0].innerText = textSet.set(pageTotal);
 
-    // fadeBox 이벤트
+    // fadeBox 
     visual.fade();
+
+    // 이미지 경로 오류
+    $("img").on('error', function () {
+        visual.msgToggle('이미지 경로가 잘못되었습니다.', 'class : ' + $(this).attr('class') + '<br/>' + 'src : ' + $(this).attr('src'));
+        $(this).attr('src', '../common/img/default/error.png');
+    });
 
     // 웹 접근성 사용시
     try {
@@ -403,6 +409,7 @@ window.addEventListener('load', function () {
 
 
 // ---------------------------------------------------------------
+// 효과음 출처
 // Thanks to, KevanGC
 // From: http://soundbible.com/1645-Pling.html
 // Distributor: 저작권 걱정없는 유튜브용 음원 & 무료 효과음 서비스 ‘뮤팟’

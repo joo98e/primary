@@ -150,7 +150,8 @@ var mCtrl = {
 
 };
 
-var soundEffect =  function (fileName) {
+var soundEffect = function (fileName) {
+    fileName = fileName.toLowerCase();
     var effect = new mCtrl.audio();
     effect.prototype.init(fileName);
 }

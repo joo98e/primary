@@ -33,6 +33,28 @@
     src: url("../font/NanumSquareEB.eot?#iefix") format('embedded-opentype'), url("../font/NanumSquareEB.woff") format('woff'), url("../font/NanumSquareEB.ttf") format('truetype');
 }
 
+/* z-index */
+
+.z_1 {
+    z-index: 1;
+}
+
+.z_2 {
+    z-index: 2;
+}
+
+.z_9 {
+    z-index: 9;
+}
+
+.z_99 {
+    z-index: 99;
+}
+
+.z_999 {
+    z-index: 999;
+}
+
 /*  */
 
 html, body {
@@ -148,7 +170,6 @@ ol, ul, li {
     background: rgba(0, 0, 0, 0.5) url(../img/modal/m_ready.png) 50% 50% no-repeat;
     z-index: 101;
 }
-
 
 #page {
     position: relative;

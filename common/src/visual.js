@@ -112,6 +112,7 @@ var visual = {
             $('#modalAlert .modal-body h6').html(bodyMsg);
             $('#modalAlert .modal-body h6').attr('title', bodyMsg);
             $('#modalWrap').fadeToggle();
+            soundEffect('alert');
 
         } else {
             // 끄기

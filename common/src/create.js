@@ -76,7 +76,7 @@ var create = {
 
         vod.addEventListener('error', function () {
             this.src = '../media/error.mp4';
-            throw "No video on this page"
+            throw "No video on this page.";
         });
 
         // 미디어 재생 가능
