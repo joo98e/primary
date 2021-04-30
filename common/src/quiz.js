@@ -225,8 +225,8 @@ var quiz = {
         switch (typeIs)
         {
             case 1: // -----------------OX
-                console.log('OX');
-                
+                ref = (a === b);
+                quiz.explanation(ref);
                 break;
             case 2: // -----------------객관식
 
@@ -278,6 +278,8 @@ var quiz = {
         console.log(score);
 
         $('.btn_check').hide();
+        $('.quizEq' + (quizCurPage + 1) + ' .choice').off();
+        $('.quizEq' + (quizCurPage + 1) + ' .btn_type_1').off();
         $('.quizEq' + (quizCurPage + 1) + ' .quiz_title_scoringImg').attr('src', '../common/img/quiz/title_' + ref + '.png').fadeIn(500, function () {
             
 
@@ -288,7 +290,11 @@ var quiz = {
             // 해설 나오기
             $('.explanationBox').fadeIn(1000, function () {
                 // 1초 후 다음문제 나오기
-                $('.btn_next').fadeIn();
+                if ((quizCurPage + 1) === quizInfo.length) {
+                    
+                } else {
+                    $('.btn_next').fadeIn();
+                }
             });
 
         });
@@ -298,6 +304,7 @@ var quiz = {
         quizCurPage++;
         $('.explanationBox').hide();
         $('.btn_next').hide();
+        
 
         $('.quizEq' + quizCurPage).hide();
         $('.quizEq' + (quizCurPage + 1)).show();
