@@ -97,6 +97,9 @@ var quiz = {
                 btn_answer_O.className = 'btn_type_1 btn_answer_O';
                 btn_answer_O.src = srcPath + 'img/quiz/btn_answer_O.png';
                 btn_answer_O.alt = '정답 O';
+                btn_answer_O.onclick = function () {
+                    
+                }
                 visual.hover(btn_answer_O, '_enable');
 
                 // 정답 X
@@ -149,20 +152,20 @@ var quiz = {
         var explanationBox = document.createElement('div'); // 퀴즈 풀이(설명) 박스
         explanationBox.className = 'explanationBox';
         var expElemArr = '';
-        expElemArr += '<div class="explanation explanation_01">';
-        expElemArr += '     <span class="exp_01">정답</span>';
-        expElemArr += '     <span class="exp_02">정답이 들어갈 공간</span>';
+        expElemArr += '<div class="explanation comment_right">';
+        expElemArr += '     <span class="title">정답</span>';
+        expElemArr += '     <span class="contents">정답이 들어갈 공간</span>';
         expElemArr += '</div>';
-        expElemArr += '<div class="explanation explanation_02">';
-        expElemArr += '     <span class="exp_03">해설</span>';
-        expElemArr += '     <span class="exp_04">해설이 들어갈 공간</span>';
+        expElemArr += '<div class="explanation comment_exp">';
+        expElemArr += '     <span class="title">해설</span>';
+        expElemArr += '     <span class="contents">해설이 들어갈 공간</span>';
         expElemArr += '</div>';
         explanationBox.innerHTML = expElemArr;
 
-        quizContainer.append(check);
-        quizContainer.append(result);
-        quizContainer.append(next);
-        quizContainer.append(explanationBox);
+        quizContainer.appendChild(check);
+        quizContainer.appendChild(result);
+        quizContainer.appendChild(next);
+        quizContainer.appendChild(explanationBox);
         document.getElementById('page').appendChild(start);
         document.getElementById('page').appendChild(quizContainer);
 
@@ -204,7 +207,7 @@ var quiz = {
 
     // ------------------------------------ 퀴즈 재시작
     restart: function () {
-
+        
     },
 
     // ------------------------------------ 퀴즈 결과 보기
@@ -222,28 +225,26 @@ var quiz = {
         switch (typeIs)
         {
             case 1: // -----------------OX
-
+                console.log('OX');
+                
                 break;
-
             case 2: // -----------------객관식
 
                 if (Array.isArray(answer[quizCurPage])) {
                     a = JSON.stringify(a.sort());
                     b = JSON.stringify(b.sort());
-                    ref = a === b;
+                    ref = (a === b);
                     quiz.explanation(ref);
                 } else {
-                    ref = a === b;
+                    ref = (a === b);
                     quiz.explanation(ref);
                 }
 
                 break;
-
             case 3: // -----------------주관식
-
+                console.log('주관식');
 
                 break;
-
             default:
                 visual.msgToggle('정의되지 않은 퀴즈 타입입니다.', 'quizType is ' + typeIs);
                 return;
@@ -258,6 +259,7 @@ var quiz = {
             soundEffect('X');
             if (quizInfo[quizCurPage].chance !== 0) {
                 // 기회가 있음
+                $('.btn_check').hide();
                 $('.quizEq' + (quizCurPage + 1) + ' .quiz_title_scoringImg').hide();
                 $('.choice').removeClass('on');
 
@@ -274,19 +276,32 @@ var quiz = {
 
         // 처리
         console.log(score);
+
+        $('.btn_check').hide();
         $('.quizEq' + (quizCurPage + 1) + ' .quiz_title_scoringImg').attr('src', '../common/img/quiz/title_' + ref + '.png').fadeIn(500, function () {
-            $('.btn_check').hide();
+            
+
+            // 해설 내용
+            $('.comment_right .contents').html(textSet.spanning(textSet.substitutionChar(quizInfo[quizCurPage].answer.toString())), '');
+            $('.comment_exp .contents').html(textSet.spanning(textSet.substitutionChar(quizInfo[quizCurPage].explanation.toString()), 'comment_scroll'), '');
             
             // 해설 나오기
             $('.explanationBox').fadeIn(1000, function () {
                 // 1초 후 다음문제 나오기
-
+                $('.btn_next').fadeIn();
             });
 
         });
 
     },
+    nextQue: function () {
+        quizCurPage++;
+        $('.explanationBox').hide();
+        $('.btn_next').hide();
 
+        $('.quizEq' + quizCurPage).hide();
+        $('.quizEq' + (quizCurPage + 1)).show();
+    },
     // ------------------------------------ 퀴즈 결과
     setResult: function () {
         
@@ -310,14 +325,15 @@ var quiz = {
             quiz.start();
         });
 
-        // ---------------------------------------- 이벤트 | OX 문제 O 클릭
-        $('.btn_answer_O').click(function () {
-            myAnswer[quizCurPage] = 'O';
-        });
+        // ---------------------------------------- 이벤트 | OX 문제 리스트 클릭
+        $('.btn_type_1').on('click', function () {
+            var state = $(this).attr('class').indexOf('O') != -1;
+            myAnswer[quizCurPage] = state ? true : false;
 
-        // ---------------------------------------- 이벤트 | OX 문제 X 클릭
-        $('.btn_answer_X').click(function () {
-            myAnswer[quizCurPage] = 'X';
+            $(this).css('background-color', '#FFFFFF');
+            $(this).siblings().css('background-color', '#848484');
+
+            $('.btn_check').show();
         });
 
         // ---------------------------------------- 이벤트 | 객관식 보기 클릭
@@ -379,8 +395,13 @@ var quiz = {
         $('.btn_check').on('click', function () {
             quiz.check();
         });
-
+        
         // ---------------------------------------- 이벤트 | 다음 문제 클릭
+        $('.btn_next').on('click', function () {
+            quiz.nextQue();
+        });
+        
+
         // ---------------------------------------- 이벤트 | 결과 보기 클릭
         // ---------------------------------------- 이벤트 | 
 

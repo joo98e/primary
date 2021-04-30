@@ -228,12 +228,11 @@
 .volume_gauge {
   position: absolute;
   display: inline-block;
-  top: 35%;
-  left: 10%;
+  top: 50%;
+  left: 8%;
   width: 100px;
   height: 5px;
   background-color: #0e7b65;
-  cursor: pointer;
 }
 
 .volume_nowGauge {
@@ -252,6 +251,7 @@
   left: 45%;
   background: url(../img/control/volume_dot.png) 0 0 no-repeat;
   background-size: cover;
+  cursor: pointer;
 }
 
 .volumePanel_wrap {
@@ -263,7 +263,7 @@
 
 .volume_mute {
   /* background: url(../img/control/volume_mute.png) 50% 50% no-repeat; */
-  line-height: 40px;
+  line-height: 38px;
   float: left;
 }
 

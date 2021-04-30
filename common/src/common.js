@@ -180,7 +180,7 @@ var srcInfo = [
     },
     {
         tagName: 'script',
-        src: srcPath + 'src/Library/jquery-3.6.0.js',
+        src: srcPath + 'src/Library/jquery-1.12.3.js',
         attribute: [
             ['type', 'text/javascript'],
             ['data-original-title', 'Jquery 연동 스크립트'],
@@ -194,14 +194,14 @@ var srcInfo = [
             ['data-original-title', 'Jquery UI 스크립트'],
         ]
     },
-    {
-        tagName: 'script',
-        src: srcPath + 'src/Library/jquery-fullscreen-min.js',
-        attribute: [
-            ['type', 'text/javascript'],
-            ['data-original-title', 'Jquery FullScreen 스크립트'],
-        ]
-    },
+    // {
+    //     tagName: 'script',
+    //     src: srcPath + 'src/Library/jquery-fullscreen-min.js',
+    //     attribute: [
+    //         ['type', 'text/javascript'],
+    //         ['data-original-title', 'Jquery FullScreen 스크립트'],
+    //     ]
+    // },
     {
         tagName: 'script',
         src: srcPath + 'src/transformScale.js',
@@ -304,6 +304,30 @@ function devStart() {
     $(document).on('click', function (e) {
         console.log(e.target);
     });
+}
+
+function setCookie(cookieName, cookieValue) {
+    var cookieText = escape(cookieName) + '=' + escape(cookieValue);
+    document.cookie = cookieText;
+}
+
+function getCookie(cookieName) {
+    var cookieValue = null;
+    if (document.cookie) {
+        var array = document.cookie.split((escape(cookieName) + '='));
+        if (array.length >= 2) {
+            var arraySub = array[1].split(';');
+            cookieValue = unescape(arraySub[0]);
+        }
+    }
+    return cookieValue;
+}
+
+function deleteCookie(cookieName) {
+    var temp = getCookie(cookieName);
+    if (temp) {
+        setCookie(cookieName, temp);
+    }
 }
 
 // ====================================================== 로드 후 메인 함수 실행

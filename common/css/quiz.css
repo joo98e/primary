@@ -6,7 +6,10 @@
     width: 100%;
     height: 100%;
     z-index: 2;
-    background: url(../img/bg/quiz.png) 0 0 no-repeat;
+    color: #e6e6e6;
+    background: #42275a;
+    background: -webkit-linear-gradient(to right, #dbdbdb, #42275a);
+    background: linear-gradient(to right, #734b6d, #42275a);
 }
 
 .btn {
@@ -23,6 +26,11 @@
 
 .btn_check {
     top: 400px;
+    right: 100px;
+}
+
+.btn_next {
+    top: 360px;
     right: 100px;
 }
 
@@ -75,6 +83,7 @@
     border-radius: 15px;
     box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.2);
     word-break: keep-all;
+    background-color: #7d467d;
 }
 
 .quiz_choiceBox {
@@ -122,7 +131,10 @@
 
 .btn_type_1 {
     width: 264px;
+    height: 264px;
     cursor: pointer;
+    border-radius: 60px;
+    background-color: #848484;
 }
 
 .btn_answer_X {
@@ -135,12 +147,31 @@
     top: 500px;
     left: 0;
     width: 100%;
-    height: 200px;
+    height: 170px;
     font-weight: 800;
     font-size: 24px;
     font-weight: 800;
     color: #999999;
-    padding: 10px 20px;
+    padding: 10px 50px;
     box-sizing: border-box;
     background-color: #333;
+}
+
+.comment_right, .comment_exp {
+    display: table;
+}
+
+.comment_right>span.title, .comment_exp>span.title {
+    padding-right: 20px;
+}
+
+.comment_right>span, .comment_exp>span {
+    display: table-cell;
+    vertical-align: top;
+}
+
+.comment_scroll {
+    display: inline-block;
+    max-height: 118px;
+    overflow-y: auto;
 }

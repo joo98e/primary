@@ -54,7 +54,8 @@ var textSet = {
         }
     },
 
-    spaning: function (data, cls) {
+    spanning: function (data, cls) {
+        var cls = cls != undefined ? cls : 'spanning';
         var before = '<span class="' + cls + '">';
         var after = '</span>';
         return before + data + after;

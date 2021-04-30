@@ -7,9 +7,9 @@ var mCtrl = {
 
     playToggle: function () {
         $('#ready').hide();
-        
+
         if (vod.ended) return;
-        
+
         if (vod.paused) {
             vod.play();
             if (playIconToggleBol) $('.control_vod .control_pause').show();
@@ -72,15 +72,15 @@ var mCtrl = {
             $('.gaugeBar').css('width', movePoint)
 
         }
-        
+
         var widthVal = vod.currentTime / vod.duration * 100 + '%';
-        
+
         $('.gaugeBar').css({
             'width': widthVal,
             'transition': '0.3s',
-            'transition-timing-function' : 'linear',
+            'transition-timing-function': 'linear',
         });
-        
+
     },
 
     volumeControl: function (event) {
@@ -88,6 +88,7 @@ var mCtrl = {
         if (event.target.className.indexOf('mute') != -1) {
             volumeLevel = 0;
             $('video, audio').prop('volume', volumeLevel);
+            $('.volume_nowGauge').css('width', '0');
             $('.volume_dragBall').css('left', '0');
         }
 
@@ -98,13 +99,28 @@ var mCtrl = {
     },
 
     volumeDraggable: function () {
+        volumeLevel = getCookie('volumeLevel') === null ? 0.5 : volumeLevel = getCookie('volumeLevel');
+        $('video, audio').prop('volume', volumeLevel);
         
+        if (getCookie('volumeLevel') === null) {
+            $('.volume_nowGauge').css('width', '45%');
+            $('.volume_dragBall').css('left', '45%');
+        } else {
+            $('.volume_nowGauge').css('width', 'calc(' + (Number(volumeLevel) * 100) + '%' + ' - 12px)');
+            $('.volume_dragBall').css('left', 'calc(' + (Number(volumeLevel) * 100) + '%' + ' - 12px)');
+        }
+        
+        $('.volume_gaugeWrap').draggable({
+            scroll: false,
+            containment: "#page",
+        });
+
         $('.volume_dragBall').draggable({
             axis: "x",
             scroll: false,
             containment: ".volume_gauge",
             start: function () {
-                
+
             },
             drag: function () {
                 var volumeWidth = Number(window.getComputedStyle(document.getElementsByClassName('volume_dragBall')[0], null).width.split("px")[0]);
@@ -112,11 +128,14 @@ var mCtrl = {
                 var volumeWrapWidth = Number(window.getComputedStyle(document.getElementsByClassName('volume_gauge')[0], null).width.split("px")[0]) - volumeWidth;
                 volumeLevel = (volumeLeft / volumeWrapWidth).toFixed(2);
                 $('video, audio').prop('volume', volumeLevel);
+                $('.volume_nowGauge').css('width', (volumeLevel * 100) + 'px');
+                setCookie('volumeLevel', volumeLevel);
             },
             stop: function () {
-                
+
             }
         });
+
     },
 
     audio: function (a) {
@@ -140,7 +159,7 @@ var mCtrl = {
 
                 // 종료
                 audioElem.onended = function () {
-                    this.remove();
+                    $(this).remove();
                     soundContainer.pop();
                 }
             }

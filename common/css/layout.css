@@ -2,7 +2,11 @@
 
 @font-face {
     font-family: "PAY";
-    src: url("../css/font/paybooc Light.ttf") format('truetype'), url("../css/font/paybooc Medium.ttf") format('truetype'), url("../css/font/paybooc Bold.ttf") format('truetype'), url("../css/font/paybooc ExtraBold.ttf") format('truetype'), url("../css/font/paybooc Light.otf"), url("../css/font/paybooc Medium.otf"), url("../css/font/paybooc Bold.otf"), url("../css/font/paybooc ExtraBold.otf"), url("../css/font/paybooc Light.woff") format('woff'), url("../css/font/paybooc Medium.woff") format('woff'), url("../css/font/paybooc Bold.woff") format('woff'), url("../css/font/paybooc ExtraBold.woff") format('woff');
+    src: 
+            url("../css/font/payboocLight.woff") format('woff'),
+             url("../css/font/payboocMedium.woff") format('woff'),
+              url("../css/font/payboocBold.woff") format('woff'),
+               url("../css/font/payboocExtraBold.woff") format('woff');
 }
 
 @font-face {
@@ -32,6 +36,40 @@
     src: url("../font/NanumSquareEB.eot");
     src: url("../font/NanumSquareEB.eot?#iefix") format('embedded-opentype'), url("../font/NanumSquareEB.woff") format('woff'), url("../font/NanumSquareEB.ttf") format('truetype');
 }
+
+html {
+    scrollbar-arrow-color: #efefef;
+    scrollbar-Track-Color: #efefef;
+    scrollbar-base-color: #dfdfdf;
+    scrollbar-Face-Color: #dfdfdf;
+    scrollbar-3dLight-Color: #dfdfdf;
+    scrollbar-DarkShadow-Color: #dfdfdf;
+    scrollbar-Highlight-Color: #dfdfdf;
+    scrollbar-Shadow-Color: #dfdfdf
+}
+
+/* Chrome, Safari용 스크롤 바 */
+
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+::-webkit-scrollbar-button:start:decrement, ::-webkit-scrollbar-button:end:increment {
+    display: block;
+    width: 12px;
+    height: 12px;
+    background: url() rgba(0, 0, 0, .05);
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, .05);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, .1);
+}
+
 
 /* z-index */
 
