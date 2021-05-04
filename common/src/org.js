@@ -119,27 +119,28 @@ var org = {
 
             elemArr += '</div>';
 
-            // 페이징 처리
-            elemArr += '<div class="org_paging">';
-            elemArr += '    <ul>';
-            elemArr += '        <li class="org_pasing_prev"></li>';
-            if (pagingNumbering) {
-                elemArr += '        <div class="orgPage">';
-                elemArr += '            <span class="orgCurPage"></span>';
-                elemArr += '            <span class="orgBoundary">/</span>';
-                elemArr += '            <span class="orgTotalPage"></span>';
-                elemArr += '        </div>';
-            }
-            elemArr += '        <li class="org_pasing_next"></li>';
-            elemArr += '    </ul>';
-            elemArr += '</div>';
         }
+        // TODO 페이징 처리
+        elemArr += '    <div class="org_pagingContainer transX noSelect">';
+        elemArr += '        <ul>';
+        elemArr += '            <li class="org_pasing_prev"></li>';
+        if (pagingNumbering) {
+            elemArr += '            <li class="orgPage">';
+            elemArr += '                <span class="orgCurPage"></span>';
+            elemArr += '                <span class="orgBoundary">/</span>';
+            elemArr += '                <span class="orgTotalPage"></span>';
+            elemArr += '            </li>';
+        }
+        elemArr += '            <li class="org_pasing_next"></li>';
+        elemArr += '        </ul>';
+        elemArr += '    </div>';
 
         elemArr += '</div>'
         organizeContainer.innerHTML = elemArr;
 
         document.getElementById('page').appendChild(organizeContainer);
 
+        org.event();
     },
 
     // ------------------------------------ 정리하기 등장 씬
@@ -149,4 +150,21 @@ var org = {
         }
     },
 
+    event: function (e) {
+
+        // 초기 페이지 삽입
+        $('.orgCurPage').text(orgCurPage);
+        $('.orgTotalPage').text(orgInfo.length);
+
+        // TODO 페이지 이동 변경 버튼 클릭
+
+    },
+
+    pagingPrev: function () {
+        
+    },
+
+    pagingNext: function () {
+        
+    },
 }
