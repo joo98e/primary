@@ -90,7 +90,7 @@ var create = {
             $('.time .end').text(durationM + ' : ' + durationS);
 
             // 기본 볼륨
-            volumeLevel = 0.5;
+            volumeLevel = getCookie('volumeLevel') === null ? 0.5 : Number(getCookie('volumeLevel'));
             $('video, audio').prop('volume', volumeLevel);
         });
 

@@ -87,6 +87,7 @@ var mCtrl = {
         // ------------------------------------------------------ mute
         if (event.target.className.indexOf('mute') != -1) {
             volumeLevel = 0;
+            setCookie('volumeLevel', 0);
             $('video, audio').prop('volume', volumeLevel);
             $('.volume_nowGauge').css('width', '0');
             $('.volume_dragBall').css('left', '0');
@@ -99,7 +100,8 @@ var mCtrl = {
     },
 
     volumeDraggable: function () {
-        volumeLevel = getCookie('volumeLevel') === null ? 0.5 : volumeLevel = getCookie('volumeLevel');
+        volumeLevel = getCookie('volumeLevel') === null ? 0.5 : Number(getCookie('volumeLevel'));
+        console.log(volumeLevel);
         $('video, audio').prop('volume', volumeLevel);
         
         if (getCookie('volumeLevel') === null) {
@@ -153,7 +155,7 @@ var mCtrl = {
                 var audioElem = document.getElementsByClassName('sound_' + textSet.set(soundContainer.length))[0];
 
                 // 할당
-                audioElem.volume = 0.5;
+                audioElem.volume = getCookie('volumeLevel') === null ? 0.5 : Number(getCookie('volumeLevel'));
                 audioElem.src = this.path + fileName + this.type;
                 audioElem.play();
 

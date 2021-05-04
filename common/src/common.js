@@ -382,7 +382,7 @@ window.addEventListener('load', function () {
     document.getElementsByClassName('control_prev')[0].addEventListener('click', visual.prevPage);
     document.getElementsByClassName('control_next')[0].addEventListener('click', visual.nextPage);
     document.getElementsByClassName('control_index')[0].addEventListener('click', visual.indexToggle);
-    document.getElementsByClassName('control_fullScreen')[0].addEventListener('click', visual.fullScreen);
+    document.getElementsByClassName('control_fullScreen')[0].addEventListener('click', visual.fullScreenToggle);
     
     // 특정 페이지 이동
     visual.indexMove();

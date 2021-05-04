@@ -2,9 +2,12 @@
 var imageArr = new Image();
 
 // 페이지 넘김 방법(slide, fade, ShowHide)
-// TODO 페이징 처리, 슬라이드, 페이드 등
 var pagingTechnic = 'slide';
+// 페이지 넘버링 처리(true / 페이징 있음, false / 페이징 없음(버튼만))
+var pagingNumbering = true;
+// 현재 정리 페이지
 var orgCurPage = Number;
+orgCurPage = 1;
 
 // 들여쓸 단위(px)
 var orgParagraphLevel = 20;
@@ -15,7 +18,7 @@ var orgMainBullet = {
     use: 'char',
     src: '../common/img/org/bullet_main.png',
     char: {
-        // 숫자 사용 여부, 뒤에 올 문자열
+        // 숫자 사용 여부, 숫자 뒤에 올 문자열
         number: true,
         bullet: '.'
     }
@@ -33,10 +36,12 @@ var orgSubBullet = {
     char: {
         // 뒤에 올 문자열
         bullet: [
-            '.',
-            '-',
-            '*',
-            '=>',
+            '· ',
+            '- ',
+            '* ',
+            '=> ',
+            '',
+            '',
         ]
     }
 }
@@ -45,7 +50,7 @@ var orgSubBullet = {
 var org = {
     // ------------------------------------ 정리하기 컨텐츠 생성 
     create: function () {
-        // 최상단
+        // 최상위
         var elemArr = '<div id="orgTextWrap">';
         var organizeContainer = document.createElement('div');
         organizeContainer.id = "organizeContainer";
@@ -58,19 +63,17 @@ var org = {
             for (var j = 0; j < orgInfo[i].length; j++) {
                 elemArr += '<ul class="orgInfo_' + textSet.set(j + 1) + '">';
 
-                // TODO 제목란에 한자 포함하여 잘 나오게 바꾸기
                 // 메인 제목 생성
                 if (orgMainBullet.use.toLowerCase() === 'image') {
-
                     // 이미지
                     imageArr.className = 'bullet mainBullet';
                     imageArr.src = orgMainBullet.src;
                     elemArr += '<li class="orgTitle orgTitle_' + textSet.set(i + 1) + '">' + imageArr.outerHTML + '<span>' + textSet.substitutionChar(orgInfo[i][j].title) + '</span></li>';
 
                 } else if (orgMainBullet.use.toLowerCase() === 'char') {
-
                     // 문자(숫자 등)
                     if (orgMainBullet.char.number === true) {
+                        console.log(textSet.substitutionChar(orgInfo[i][j].title));
                         elemArr += '<li class="orgTitle orgTitle_' + textSet.set(i + 1) + '">' + textSet.spanning(String((j + 1)).concat(orgMainBullet.char.bullet), 'mainBullet') + '<span> ' + textSet.substitutionChar(orgInfo[i][j].title) + '</span></li>';
                     } else {
                         elemArr += '<li class="orgTitle orgTitle_' + textSet.set(i + 1) + '">' + orgMainBullet.char.bullet + '<span>' + textSet.substitutionChar(orgInfo[i][j].title) + '</span></li>';
@@ -115,12 +118,27 @@ var org = {
             }
 
             elemArr += '</div>';
+
+            // 페이징 처리
+            elemArr += '<div class="org_paging">';
+            elemArr += '    <ul>';
+            elemArr += '        <li class="org_pasing_prev"></li>';
+            if (pagingNumbering) {
+                elemArr += '        <div class="orgPage">';
+                elemArr += '            <span class="orgCurPage"></span>';
+                elemArr += '            <span class="orgBoundary">/</span>';
+                elemArr += '            <span class="orgTotalPage"></span>';
+                elemArr += '        </div>';
+            }
+            elemArr += '        <li class="org_pasing_next"></li>';
+            elemArr += '    </ul>';
+            elemArr += '</div>';
         }
 
         elemArr += '</div>'
         organizeContainer.innerHTML = elemArr;
+
         document.getElementById('page').appendChild(organizeContainer);
-        console.log(elemArr)
 
     },
 

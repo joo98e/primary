@@ -7,7 +7,7 @@ var orgInfo = [
     [
         // 단락
         {
-            title: '★제목1可鄭☆',
+            title: '★제목1可鄭123☆',
             contents: [
                 {
                     level : 1,
@@ -25,6 +25,18 @@ var orgInfo = [
                     level : 3,
                     content : '내용4'
                 },
+                {
+                    level: 4,
+                    content: '내용5'
+                },
+                {
+                    level: 5,
+                    content: '내용5'
+                },
+                {
+                    level: 6,
+                    content: '내용6'
+                },
             ],
         },
         // 단락
@@ -36,7 +48,7 @@ var orgInfo = [
     [
         // 단락
         {
-            title: '★제목1可鄭123☆',
+            title: '★제목1123可鄭123☆',
             contents: [
                 {
                     level: 1,
@@ -55,10 +67,6 @@ var orgInfo = [
                     content: '내용4'
                 },
             ],
-        },
-        // 단락
-        {
-            title: '제목2',
         },
     ]
 ];

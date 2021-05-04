@@ -93,7 +93,7 @@ var visual = {
             });
 
             mCtrl.playToggle();
-        } 
+        }
     },
 
     indexMove: function () {
@@ -129,22 +129,22 @@ var visual = {
 
         if ($('.volume_gaugeWrap').is(':visible')) {
             $('.volume_gaugeWrap').animate({
-                'left': volumeGetStyleLeft - 20 + 'px',
+                'left': (volumeGetStyleLeft - 20) + 'px',
                 'opacity': '0'
             }, function () {
                 $(this).hide();
             });
         } else {
             $('.volume_gaugeWrap').show().animate({
-                'left': volumeGetStyleLeft + 20 + 'px',
+                'left': (volumeGetStyleLeft + 20) + 'px',
                 'opacity': '1'
             });
         }
     },
 
-    fullScreen: function (e) {
-        
+    fullScreenToggle: function (e) {
+        // TODO
     }
 
-    
+
 }
