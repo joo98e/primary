@@ -2,11 +2,7 @@
 
 @font-face {
     font-family: "PAY";
-    src: 
-            url("../css/font/payboocLight.woff") format('woff'),
-             url("../css/font/payboocMedium.woff") format('woff'),
-              url("../css/font/payboocBold.woff") format('woff'),
-               url("../css/font/payboocExtraBold.woff") format('woff');
+    src: url("../css/font/payboocLight.woff") format('woff'), url("../css/font/payboocMedium.woff") format('woff'), url("../css/font/payboocBold.woff") format('woff'), url("../css/font/payboocExtraBold.woff") format('woff');
 }
 
 @font-face {
@@ -48,6 +44,15 @@ html {
     scrollbar-Shadow-Color: #dfdfdf
 }
 
+.noSelect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
 /* Chrome, Safari용 스크롤 바 */
 
 ::-webkit-scrollbar {
@@ -69,7 +74,6 @@ html {
 ::-webkit-scrollbar-thumb {
     background: rgba(0, 0, 0, .1);
 }
-
 
 /* z-index */
 

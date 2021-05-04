@@ -36,8 +36,8 @@
 
 .btn_result {
     display: none;
-    top: 80%;
-    left: 50%;
+    top: 430px;
+    right: 20px;
 }
 
 .header_quiz {
@@ -137,6 +137,10 @@
     background-color: #848484;
 }
 
+.btn_type_1.on {
+    background-color: #FFF;
+}
+
 .btn_answer_X {
     margin-left: 20px;
 }
@@ -174,4 +178,65 @@
     display: inline-block;
     max-height: 118px;
     overflow-y: auto;
+}
+
+.inputWrap {
+    position: relative;
+    width: 400px;
+    height: 60px;
+    margin: 0 auto;
+    border-radius: 5px;
+    background: #222222;
+}
+
+.inputLabel {
+    position: absolute;
+    top: 15px;
+    left: 10px;
+    font-size: 24px;
+    font-weight: 800;
+    color: #555555;
+    transition: all 0.3s;
+}
+
+.inputLabel.on {
+    top: 5px;
+    font-size: 12px;
+}
+
+.choice_input {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    font-size: 20px;
+    font-weight: 800;
+    font-family: 'PAY';
+    line-height: 50px;
+    color: #DEDEDE;
+    padding-top: 10px;
+    text-indent: 10px;
+    resize: none;
+    border: none;
+    overflow-y: hidden;
+    white-space: nowrap;
+    background: transparent;
+}
+
+.choice_input:focus {
+    outline: none;
+}
+
+.inputFocusLine {
+    position: relative;
+    bottom: 10px;
+    width: 95%;
+    margin: 0 auto;
+    transition: all 0.3s;
+    border-radius: 5px;
+    border-bottom: 2px solid #555555;
+    transform: scaleX(0);
+}
+
+.inputFocusLine.on {
+    transform: scaleX(1);
 }

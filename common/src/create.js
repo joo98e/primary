@@ -20,6 +20,7 @@ var create = {
         elem += '<span class="controlPanel control_pause" title="일시정지 버튼"></span>';
         elem += '<span class="controlPanel control_replay" title="되감기 버튼"></span>';
         elem += '<div class="controlPanel control_volume" title="볼륨 켜기, 끄기"></div>';
+        // TODO 풀스크린 기능
         elem += '<div class="controlPanel control_fullScreen" title="전체화면 켜기, 끄기"></div>';
         elem += '</div>';
 

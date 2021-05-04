@@ -10,6 +10,8 @@ Primary PROTO dev
 > 8) ajax srt
 > 9) TODO 네온 버튼
 >  - https://www.youtube.com/watch?v=ex7jGbyFgpA
+> 10) /\s/g
+> 11) 스크롤바 플러그인
 
 #### 추가
 ```

@@ -2,7 +2,7 @@
 var imageArr = new Image();
 
 // 페이지 넘김 방법(slide, fade, ShowHide)
-// TODO
+// TODO 페이징 처리, 슬라이드, 페이드 등
 var pagingTechnic = 'slide';
 var orgCurPage = Number;
 
@@ -58,6 +58,7 @@ var org = {
             for (var j = 0; j < orgInfo[i].length; j++) {
                 elemArr += '<ul class="orgInfo_' + textSet.set(j + 1) + '">';
 
+                // TODO 제목란에 한자 포함하여 잘 나오게 바꾸기
                 // 메인 제목 생성
                 if (orgMainBullet.use.toLowerCase() === 'image') {
 
