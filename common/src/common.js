@@ -1,3 +1,6 @@
+
+// TODO TEST 필요 차시명 읽는 것, 컨트롤바 버튼 관련해서 접근성 텍스트 읽는 것
+
 // 기본 정보
 var courseChasi = String;
 var coursePage = String;
@@ -14,8 +17,6 @@ var progress = false;
 
 // 웹 접근성 사용 여부(본 개발물 외에 추가되는 구조에는 작성할 때 alt, title 등 함께 작성 필요함)
 var webAccessibility = false;
-
-// 차시명 읽는 것, 컨트롤바 버튼 관련해서 접근성 텍스트 읽는 것
 
 // 차시명 입력 필요(인덱스, 차시 이미지 타이틀 등)
 var chasiName = [
@@ -48,7 +49,6 @@ var indexSubTitleWrapBullet = ' - ';
 var indexActiveBorderColor = '#98f2bb';
 var indexActiveTextColor = '#98f2bb';
 
-
 // 컨트롤바 위에 게이지바
 var gaugePositionBol = true;
 // 재생 일시정지  토글 여부
@@ -57,7 +57,8 @@ var playIconToggleBol = false;
 var NewVolumeBol = true;
 var volumeGetStyleLeft;
 var contentScale = 1;
-// 미디어
+
+// 미디어 담을 변수
 var vod;
 
 // 기본 common 경로
@@ -77,6 +78,7 @@ var srcInfo = [
     //         ['data-original-title', '차시 페이지 정보 스크립트'],
     //     ]
     // },
+
     {
         condition: quizPage,
         tagName: 'script',
@@ -145,6 +147,7 @@ var srcInfo = [
         ],
     },
     {
+        condition: guidePage,
         tagName: 'link',
         src: srcPath + 'css/guide.css',
         attribute: [
@@ -302,7 +305,7 @@ for (var cnt = 0; cnt < srcInfo.length; cnt++) {
 
 function devStart() {
     $(document).on('click', function (e) {
-        console.log(e.target);
+        console.log(e.type, e.target);
     });
 }
 
@@ -340,7 +343,6 @@ window.addEventListener('load', function () {
     $('#wrap').show();
 
     // 스크롤바
-    // $('body').mCustomScrollbar();
 
     // 인덱스
     create.index();
@@ -364,9 +366,9 @@ window.addEventListener('load', function () {
     create.soundContainer();
 
     // 페이지별 이벤트
-    if (curPage == guidePage) guide.create();
-    if (curPage == quizPage) quiz.create();
-    if (curPage == orgPage) org.create();
+    if (curPage === guidePage) guide.create();
+    if (curPage === quizPage) quiz.create();
+    if (curPage === orgPage) org.create();
     
     // ready 사라지기
     document.getElementById('ready').addEventListener('click', mCtrl.playToggle);
@@ -387,18 +389,17 @@ window.addEventListener('load', function () {
     // 특정 페이지 이동
     visual.indexMove();
 
+    // fadeBox 
+    visual.fade();
+
     // 볼륨 드래그
     mCtrl.volumeDraggable();
 
     // 풀스크린
-    
 
     // 페이지 수 삽입
     document.getElementsByClassName('control_currentP')[0].innerText = textSet.set(coursePage);
     document.getElementsByClassName('control_totalP')[0].innerText = textSet.set(pageTotal);
-
-    // fadeBox 
-    visual.fade();
 
     // 이미지 경로 오류
     $("img").on('error', function () {

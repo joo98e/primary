@@ -1,8 +1,8 @@
 // 이미지용 객체
 var imageArr = new Image();
 
-// 페이지 넘김 방법(slide, fade, ShowHide)
-var pagingTechnic = 'slide';
+// 페이지 넘김 방법(slide, ShowHide)
+var pagingTech = 'slide';
 // 페이지 넘버링 처리(true / 페이징 있음, false / 페이징 없음(버튼만))
 var pagingNumbering = true;
 // 현재 정리 페이지
@@ -40,8 +40,8 @@ var orgSubBullet = {
             '- ',
             '* ',
             '=> ',
-            '',
-            '',
+            ' * ',
+            ' ** ',
         ]
     }
 }
@@ -120,10 +120,11 @@ var org = {
             elemArr += '</div>';
 
         }
+        
         // TODO 페이징 처리
         elemArr += '    <div class="org_pagingContainer transX noSelect">';
         elemArr += '        <ul>';
-        elemArr += '            <li class="org_pasing_prev"></li>';
+        elemArr += '            <li class="org_moveBtn org_pasing_prev"></li>';
         if (pagingNumbering) {
             elemArr += '            <li class="orgPage">';
             elemArr += '                <span class="orgCurPage"></span>';
@@ -131,7 +132,7 @@ var org = {
             elemArr += '                <span class="orgTotalPage"></span>';
             elemArr += '            </li>';
         }
-        elemArr += '            <li class="org_pasing_next"></li>';
+        elemArr += '            <li class="org_moveBtn org_pasing_next"></li>';
         elemArr += '        </ul>';
         elemArr += '    </div>';
 
@@ -157,14 +158,30 @@ var org = {
         $('.orgTotalPage').text(orgInfo.length);
 
         // TODO 페이지 이동 변경 버튼 클릭
-
+        $('.org_pasing_prev').on('click', org.pageMove);
+        $('.org_pasing_next').on('click', org.pageMove);
     },
 
-    pagingPrev: function () {
-        
+    pageMove: function () {
+        var state = $(this).attr('class').indexOf('next') === -1 ? true : false;
+        if (state) {
+            // 이전
+            console.log('이전');
+        } else {
+            // 다음
+            console.log('다음');
+            org.pageAnimation($('.orgEq_' + textSet.set(orgCurPage)), $('.orgEq_' + textSet.set(orgCurPage + 1)));
+        }
     },
 
-    pagingNext: function () {
-        
-    },
+    pageAnimation: function (cur, will) {
+        // cur : 현재
+        // will : 보여질 페이지
+        console.log($('#orgTextWrap').css('width'));
+        if (pagingTech.toLowerCase() === 'slide') {
+            
+        } else if (pagingTech.toLowerCase() === 'showhide') {
+
+        }
+    }
 }

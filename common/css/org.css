@@ -54,11 +54,37 @@
     font-weight: 600;
 }
 
-.org_pagingContainer{
+.org_pagingContainer {
     position: absolute;
     left: 50%;
-    bottom: -10px;
+    bottom: -40px;
     margin: 0 auto;
     font-size: 24px;
     font-weight: 800;
+}
+
+.org_moveBtn {
+    position: absolute;
+    top: 0;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+}
+
+.org_pasing_prev {
+    left: -40px;
+    background: url(../img/org/page_prev.png) 50% 50% no-repeat;
+}
+
+.org_pasing_prev:hover {
+    background: url(../img/org/page_prev_enable.png) 50% 50% no-repeat;
+}
+
+.org_pasing_next {
+    right: -40px;
+    background: url(../img/org/page_next.png) 50% 50% no-repeat;
+}
+
+.org_pasing_next:hover {
+    background: url(../img/org/page_next_enable.png) 50% 50% no-repeat;
 }
