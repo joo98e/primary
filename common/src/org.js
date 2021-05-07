@@ -167,20 +167,43 @@ var org = {
         if (state) {
             // 이전
             console.log('이전');
+            org.pageAnimation($('.orgEq_' + textSet.set(orgCurPage)), $('.orgEq_' + textSet.set(orgCurPage - 1)), state);
         } else {
             // 다음
             console.log('다음');
-            org.pageAnimation($('.orgEq_' + textSet.set(orgCurPage)), $('.orgEq_' + textSet.set(orgCurPage + 1)));
+            org.pageAnimation($('.orgEq_' + textSet.set(orgCurPage)), $('.orgEq_' + textSet.set(orgCurPage + 1)), state);
         }
     },
 
-    pageAnimation: function (cur, will) {
+    pageAnimation: function (cur, will, state) {
         // cur : 현재
         // will : 보여질 페이지
+        // state true 이전 / false 다음
+        // TODO 
         console.log($('#orgTextWrap').css('width'));
+        console.log('숨겨질 요소', cur.attr('class'));
+        console.log('보여질 요소', will.attr('class'));
+        console.log();
+
+        
         if (pagingTech.toLowerCase() === 'slide') {
             
         } else if (pagingTech.toLowerCase() === 'showhide') {
+            if (orgCurPage !== 1) {
+                visual.msgToggle('정리하기', '첫 페이지입니다.');
+                return;
+            } else if (orgCurPage !== orgInfo.length){
+                visual.msgToggle('정리하기', '마지막 페이지입니다.');
+                return;
+            }
+
+            if (state) {
+                // 이전
+
+            } else {
+                // 다음
+                
+            }
 
         }
     }
