@@ -458,7 +458,7 @@ var quiz = {
         });
 
         // ---------------------------------------- 이벤트 | 주관식 입력란 이벤트
-        $('.choice_input').on('focus blur keyup', function (e) {
+        $('.choice_input').on('focus blur keyup change', function (e) {
             if (e.type === 'focus') {
                 $('.inputLabel').addClass('on');
                 $('.inputFocusLine').addClass('on');
