@@ -144,6 +144,7 @@ var visual = {
 
     fullScreenToggle: function (e) {
         // TODO
+        
     }
 
 

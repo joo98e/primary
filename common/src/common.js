@@ -1,7 +1,7 @@
 
 // TODO TEST 필요 차시명 읽는 것, 컨트롤바 버튼 관련해서 접근성 텍스트 읽는 것
 
-// 기본 정보
+// 기본 정보──────────────────────────────────────────────────────────────────────────────────────
 var courseChasi = String;
 var coursePage = String;
 
@@ -10,7 +10,6 @@ coursePage = location.href.split('.html')[0].substr(location.href.length - 10, 5
 
 var curChasi = Number(courseChasi);
 var curPage = Number(coursePage);
-
 
 // 콘텐츠 내부 자체 진도 체크 적용 여부
 var progress = false;
@@ -283,9 +282,9 @@ var srcInfo = [
         ]
     },
 ];
+// ───────────────────────────────────────────────────────────────────────────────────────────────
 
-
-// CSS, JS 태그
+// CSS, JS 태그 연동
 for (var cnt = 0; cnt < srcInfo.length; cnt++) {
 
     var elem = document.createElement(srcInfo[cnt].tagName);
@@ -442,10 +441,9 @@ window.addEventListener('load', function () {
 });
 
 
-// ---------------------------------------------------------------
-// 효과음 출처
+// 효과음 출처(일부) ─────────────────────────────────────────────────────────────────────────────
 // Thanks to, KevanGC
 // From: http://soundbible.com/1645-Pling.html
 // Distributor: 저작권 걱정없는 유튜브용 음원 & 무료 효과음 서비스 ‘뮤팟’
 // https://www.mewpot.com
-// ---------------------------------------------------------------
+// ───────────────────────────────────────────────────────────────────────────────────────────────

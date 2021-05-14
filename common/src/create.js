@@ -1,6 +1,5 @@
 var indexCurrentWidth;
 
-
 // 공통으로 생성하는 요소
 
 var create = {

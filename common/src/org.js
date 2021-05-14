@@ -1,21 +1,22 @@
 // 이미지용 객체
 var imageArr = new Image();
 
-// 페이지 넘김 방법(slide, ShowHide)
+// 페이지 넘김 방법(slide, ShowHide) ──────────────────────────────────────────── 
 // 1 : slide
 // 2 : ShowHide
 // 3 : Fade
 var pagingTech = 1;
-// 페이지 넘버링 처리(true / 페이징 있음, false / 페이징 없음(버튼만))
+
+// 페이지 넘버링 처리(true / 페이징 있음, false / 페이징 없음(버튼만)) ───────────
 var pagingNumbering = true;
 // 현재 정리 페이지
 var orgCurPage = Number;
 orgCurPage = 1;
 
-// 들여쓸 단위(px)
+// 들여쓸 단위(px) ──────────────────────────────────────────────────────────────
 var orgParagraphLevel = 20;
 
-// 제목 불릿
+// 제목 불릿 ────────────────────────────────────────────────────────────────────
 var orgMainBullet = {
     // 'image' : 이미지 / 'char' : 문자형 / null 없음
     use: 'char',
@@ -26,7 +27,7 @@ var orgMainBullet = {
         bullet: '.'
     }
 }
-// 세부 내용 단계별 이미지 불릿
+// 세부 내용 단계별 이미지 불릿 ──────────────────────────────────────────────────
 var orgSubBullet = {
     // 불릿 사용 여부('image' : 이미지 / 'char' : 문자형 / null 없음)
     use: 'char',
@@ -48,23 +49,23 @@ var orgSubBullet = {
         ]
     }
 }
-// 프린트
+// 프린트 ───────────────────────────────────────────────────────────────────────
 var printSettings = {
     logo: true,
     chasiName: true,
     background: {
         use: true,
         src: '',
-        color : ''
+        color: ''
     },
     fontFamily: '',
-    
+
 }
 
 
 
 var org = {
-    // ------------------------------------ 정리하기 컨텐츠 생성 
+    // 정리하기 컨텐츠 생성 ─────────────────────────────────────────────────────
     create: function () {
         // 최상위
         var elemArr = '<div id="orgTextWrap">';
@@ -140,7 +141,7 @@ var org = {
 
         elemArr += '    </div>'
         elemArr += '</div>'
-        // ────────────────────────────────────────────────────────────────── 페이징 처리
+        // 페이징 처리───────────────────────────────────────────────────────
         elemArr += '<div class="org_pagingContainer transX noSelect">';
         elemArr += '    <ul>';
         elemArr += '        <li class="org_moveBtn org_pasing_prev"></li>';
@@ -161,11 +162,9 @@ var org = {
 
         org.event();
         org.pagingTechPlate();
-
-        // ────────────────────────────────────────────────────────────────── 
     },
 
-    // ------------------------------------ 정리하기 등장 씬
+    // 정리하기 등장 씬 ─────────────────────────────────────────────────────
     appear: function () {
         if (vod.currentTime >= vod.duration - 3 && !$('#orgTextWrap').is(':visible')) {
             $('#orgTextWrap').fadeIn();
@@ -173,8 +172,7 @@ var org = {
         }
     },
 
-    event: function (e) {
-
+    event: function () {
         // 초기 페이지 삽입
         $('.orgCurPage').text(orgCurPage);
         $('.orgTotalPage').text(orgInfo.length);
@@ -258,11 +256,11 @@ var org = {
                     'height': '100%',
                     'transition': '1s',
                 });
-                
+
                 $('.orgEq').each(function (idx, elem) {
                     $(this).css('left', (idx * 100) + '%');
                 });
-                
+
                 break;
 
             case 2:
@@ -272,13 +270,15 @@ var org = {
 
             case 3:
                 // ────────────────────────────────────────────────────────────────── Fade
-                
+
                 break;
         }
     },
 
     printCreate: function () {
-
+        // ┌──────────────────────────────────────────────────────────────────┐
+        //   TODO print 안의 세팅을 이용해서 수정하기                          
+        // └──────────────────────────────────────────────────────────────────┘
         var printContain = document.getElementsByClassName('orgEqList')[0];
         var printWindow = window.open("", "_blank", "width=600, height=800");
 
@@ -298,8 +298,4 @@ var org = {
             '</html>'
         );
     },
-
-    printDevStart: function () {
-        $('.cloneWrap').css('transform', 'scale(0.3, 0.3)');
-    }
 }
