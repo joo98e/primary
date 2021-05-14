@@ -466,6 +466,7 @@ var quiz = {
             if (e.type === 'blur') {
                 $('.choice_input').val() == '' ? $('.inputLabel').removeClass('on') : '';
                 $('.choice_input').val() == '' ? $('.inputFocusLine').removeClass('on') : '';
+                $('.choice_input').val() != '' ? $('.btn_check').fadeIn() : $('.btn_check').fadeOut();
             }
             if (e.type === 'keyup') {
 

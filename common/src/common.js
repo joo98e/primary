@@ -197,6 +197,15 @@ var srcInfo = [
             ['data-original-title', 'Jquery UI 스크립트'],
         ]
     },
+    {
+        condition: orgPage,
+        tagName: 'script',
+        src: srcPath + 'src/Library/jquery.PrintArea.js',
+        attribute: [
+            ['type', 'text/javascript'],
+            ['data-original-title', '영역 프린트 라이브러리'],
+        ]
+    },
     // {
     //     tagName: 'script',
     //     src: srcPath + 'src/Library/jquery-fullscreen-min.js',

@@ -1,5 +1,11 @@
-
-// 목차 정보
+// 목차 정보────────────────────────────────────────────────────────────────
+// indexInfo                        : 목차 정보
+// indexInfo.title                  : 목차 상위 제목
+// indexInfo.pageNum                : 목차 상위 제목 클릭시 이동될 페이지
+// indexInfo.subTitle               : 목차 하위 
+// indexInfo.subTitle.subTitleName  : 목차 하위 제목
+// indexInfo.subTitle.pageNum       : 목차 하위 제목 클릭시 이동될 페이지
+// ─────────────────────────────────────────────────────────────────────────
 
 var indexInfo = [
     {

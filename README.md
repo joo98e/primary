@@ -1,5 +1,7 @@
 # Primary
+┌────────────────┐
 Primary PROTO dev
+└────────────────┘
 
 #### 추가 기능
 > 5) helpMe(); => 함수에 대한 간략 설명, 설정값 등 설명
@@ -10,6 +12,7 @@ Primary PROTO dev
 >  - https://www.youtube.com/watch?v=ex7jGbyFgpA
 > 10) /\s/g
 > 11) 스크롤바 플러그인
+> 12) 북마크 기능(컨트롤바 북마크 기능)
 
 #### 정규식
 ```

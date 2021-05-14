@@ -15,8 +15,13 @@
     position: relative;
     top: 100px;
     height: 500px;
-    padding: 10px 50px;
-    box-sizing: border-box;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.orgEqList {
+    position: relative;
+    height: 100%;
 }
 
 .orgEq {
@@ -55,9 +60,10 @@
 }
 
 .org_pagingContainer {
+    display: none;
     position: absolute;
     left: 50%;
-    bottom: -40px;
+    bottom: 70px;
     margin: 0 auto;
     font-size: 24px;
     font-weight: 800;
@@ -87,4 +93,20 @@
 
 .org_pasing_next:hover {
     background: url(../img/org/page_next_enable.png) 50% 50% no-repeat;
+}
+
+.cloneWrap {
+    position: absolute;
+    width: 210mm;
+    height: 297mm;
+    top: -180px;
+    left: 0;
+    border: 1px solid #734b6d;
+}
+
+.cloneWrap .orgEq {
+    width: 210mm;
+    height: 297mm;
+    padding: 16mm;
+    box-sizing: border-box;
 }
