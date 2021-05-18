@@ -282,6 +282,13 @@ var org = {
         var printContain = document.getElementsByClassName('orgEqList')[0];
         var printWindow = window.open("", "_blank", "width=600, height=800");
 
+        // printWindow.$('.orgEq').css({
+        //     'position': 'relative',
+        //     'display': 'block',
+        //     'width': '210mm',
+        //     'height': '297mm',
+        // });
+        printWindow.document.$('.orgEq').css('background', '#000000')
         printWindow.document.write(
             '<!DOCTYPE html>' +
             '<html lang="KO">' +
@@ -290,6 +297,8 @@ var org = {
             '<meta http-equiv="X-UA-Compatible" content="IE=edge">' +
             '<meta name="viewport" content="width=device-width, initial-scale=1.0">' +
             '<link href="../common/css/print.css" rel="stylesheet" data-original-title="프린트 전용">' +
+            '<script language="javascript" src="../common/src/Library/jquery-1.12.3.js" data-original-title="프린트 라이브러리"></script>' +
+            // '<script language="javascript" src="../common/src/Library/jquery.PrintArea.js" data-original-title="프린트 라이브러리"></script>' +
             '<title>' + chasiName[courseChasi - 1] + '</title>' +
             '</head>' +
             '<body>' +

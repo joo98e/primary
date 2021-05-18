@@ -84,6 +84,7 @@ var srcInfo = [
         src: './js/quizInfo.js',
         attribute: [
             ['type', 'text/javascript'],
+            ['charset', 'UTF-8'],
             ['data-original-title', '퀴즈 정보 스크립트'],
         ]
     },
@@ -345,6 +346,12 @@ function deleteCookie(cookieName) {
 window.addEventListener('load', function () {
 
     console.log(document.readyState);
+    
+    if (!progress) {
+        $("body").attr("oncontextmenu", "return false");
+        $("body").attr("ondragstart", "return false");
+        $("body").attr("onselectstart", "return false");
+    }
 
     // 로딩 후
     $('.loader').hide();

@@ -1,3 +1,4 @@
+var isDev = new RegExp(/'mirim'/g);
 
 // Scale
 // 스케 - 0 일이 1 이면 원래값
@@ -41,4 +42,15 @@ window.addEventListener('load', function () {
         
     }
     
+    $(window).on('resize', function (e) {
+        var refURL = location.href;
+        // index.html일 경우
+        if (refURL.indexOf('index.html') != -1) {
+            console.log('this page is index.html');
+        }
+        // /\d/.html일 경우
+        else if (refURL.indexOf('.') != -1) {
+            
+        }
+    });
 });
