@@ -62,7 +62,7 @@ header{box-sizing: border-box; padding: 20px;}
     letter-spacing: 2px;
     overflow: hidden;
     margin: 0 auto;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 .company_title.text1{
     width: 100%;
@@ -91,18 +91,18 @@ header{box-sizing: border-box; padding: 20px;}
 */
 @font-face {
     font-family: "PAY";
-    src: url("../css/font/paybooc Light.ttf") format('truetype'),
-         url("../css/font/paybooc Medium.ttf") format('truetype'),
-         url("../css/font/paybooc Bold.ttf") format('truetype'),
-         url("../css/font/paybooc ExtraBold.ttf") format('truetype'),
-         url("../css/font/paybooc Light.otf"),
-         url("../css/font/paybooc Medium.otf"),
-         url("../css/font/paybooc Bold.otf"),
-         url("../css/font/paybooc ExtraBold.otf"),
-         url("../css/font/paybooc Light.woff") format('woff'),
-         url("../css/font/paybooc Medium.woff") format('woff'),
-         url("../css/font/paybooc Bold.woff") format('woff'),
-         url("../css/font/paybooc ExtraBold.woff") format('woff');
+    src: url("../css/font/payboocLight.ttf") format('truetype'),
+         url("../css/font/payboocMedium.ttf") format('truetype'),
+         url("../css/font/payboocBold.ttf") format('truetype'),
+         url("../css/font/payboocExtraBold.ttf") format('truetype'),
+         url("../css/font/payboocLight.otf"),
+         url("../css/font/payboocMedium.otf"),
+         url("../css/font/payboocBold.otf"),
+         url("../css/font/payboocExtraBold.otf"),
+         url("../css/font/payboocLight.woff") format('woff'),
+         url("../css/font/payboocMedium.woff") format('woff'),
+         url("../css/font/payboocBold.woff") format('woff'),
+         url("../css/font/payboocExtraBold.woff") format('woff');
 }
 
 /*기본태그 정의*/

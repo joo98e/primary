@@ -94,7 +94,7 @@ var org = {
                         console.log(textSet.substitutionChar(orgInfo[i][j].title));
                         elemArr += '<li class="orgTitle orgTitle_' + textSet.set(i + 1) + '">' + textSet.spanning(String((j + 1)).concat(orgMainBullet.char.bullet), 'mainBullet') + '<span> ' + textSet.substitutionChar(orgInfo[i][j].title) + '</span></li>';
                     } else {
-                        elemArr += '<li class="orgTitle orgTitle_' + textSet.set(i + 1) + '">' + orgMainBullet.char.bullet + '<span>' + textSet.substitutionChar(orgInfo[i][j].title) + '</span></li>';
+                        elemArr += '<li class="orgTitle orgTitle_' + textSet.set(i + 1) + '">' + textSet.spanning(orgMainBullet.char.bullet) + '<span>' + textSet.substitutionChar(orgInfo[i][j].title) + '</span></li>';
                     }
 
                 } else if (orgMainBullet.use === 'null') {
